@@ -1,0 +1,194 @@
+---
+/**
+ * GlossaryTooltip.astro
+ * A reusable component that displays tooltips for SEO terms from the glossary
+ */
+import glossary from '../../data/glossary.json';
+
+interface Props {
+  term: string; // The term to look up in the glossary
+  className?: string; // Optional CSS class for styling
+}
+
+const { term, className = '' } = Astro.props;
+
+// Find the term in the glossary (case-insensitive search)
+const glossaryEntry = glossary.find(entry => 
+  entry.term.toLowerCase() === term.toLowerCase()
+);
+
+// If term not found, just render the term as regular text
+if (!glossaryEntry) {
+  return <span class={className}>{term}</span>;
+}
+
+// Generate a unique ID for aria attributes
+const tooltipId = `tooltip-${glossaryEntry.slug}`;
+---
+
+<span 
+  class={`glossary-term ${className}`}
+  data-tooltip-term={glossaryEntry.term}
+  data-tooltip-category={glossaryEntry.category}
+  aria-describedby={tooltipId}
+>
+  <span class="term-text">{term}</span>
+  <span class="tooltip-indicator" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clip-rule="evenodd" />
+    </svg>
+  </span>
+  <span 
+    id={tooltipId}
+    role="tooltip" 
+    class="tooltip-content"
+  >
+    <span class="tooltip-term">{glossaryEntry.term}</span>
+    <span class="tooltip-definition">{glossaryEntry.definition}</span>
+    <a href={`/glossary#${glossaryEntry.slug}`} class="tooltip-link">
+      Learn more
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </a>
+  </span>
+</span>
+
+<style>
+  .glossary-term {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px dotted var(--color-primary);
+  }
+
+  .term-text {
+    display: inline;
+  }
+
+  .tooltip-indicator {
+    display: inline-flex;
+    margin-left: 0.25rem;
+    opacity: 0.7;
+    color: var(--color-primary);
+  }
+
+  .tooltip-content {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    width: min(300px, 90vw);
+    background-color: white;
+    color: var(--color-text-primary);
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    z-index: 50;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+
+  .tooltip-content::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+
+  .glossary-term:hover .tooltip-content,
+  .glossary-term:focus .tooltip-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  .tooltip-term {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+  }
+
+  .tooltip-definition {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .tooltip-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-top: 0.25rem;
+    text-decoration: none;
+    align-self: flex-end;
+    transition: color 0.2s ease;
+  }
+
+  .tooltip-link:hover {
+    text-decoration: underline;
+  }
+
+  /* For reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .tooltip-content {
+      transition: opacity 0.1s linear;
+    }
+  }
+
+  /* Make tooltips work better on touch devices */
+  @media (hover: none) {
+    .glossary-term {
+      cursor: default;
+    }
+    
+    .tooltip-content {
+      display: none;
+    }
+    
+    .glossary-term:active .tooltip-content {
+      display: flex;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Make tooltips accessible with keyboard navigation
+  document.addEventListener('DOMContentLoaded', () => {
+    const glossaryTerms = document.querySelectorAll('.glossary-term');
+    
+    glossaryTerms.forEach(term => {
+      term.setAttribute('tabindex', '0');
+      
+      term.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          // Toggle a class to show/hide the tooltip on keyboard interaction
+          term.classList.toggle('tooltip-active');
+        }
+      });
+      
+      // Reset active state when focus moves away
+      term.addEventListener('blur', () => {
+        term.classList.remove('tooltip-active');
+      });
+    });
+  });
+</script>

@@ -1,0 +1,207 @@
+---
+// Testimonials.astro - Client testimonials section with proper color usage
+// Primary/secondary colors for main content, accent colors only for highlights
+---
+
+<section id="testimonials" class="py-20 bg-bg-primary text-text-primary relative overflow-hidden">
+  <!-- Background pattern/texture (using primary/secondary colors, not accent) -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 left-0 w-full h-full bg-bg-secondary" style="background-image: radial-gradient(var(--color-bg-tertiary) 1px, transparent 1px); background-size: 20px 20px;"></div>
+  </div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        What Our Eastern NC Clients <span class="text-gradient">Are Saying</span>
+      </h2>
+      <p class="text-text-secondary text-lg">
+        Discover why local businesses across Eastern North Carolina trust us for their SEO and digital marketing needs.
+      </p>
+    </div>
+    
+    <!-- Testimonial slider/carousel -->
+    <div class="relative" x-data="{ activeSlide: 0, totalSlides: 3 }">
+      <!-- Testimonial cards container -->
+      <div class="overflow-hidden">
+        <div class="flex transition-transform duration-500 ease-in-out" x-bind:style="`transform: translateX(-${activeSlide * 100}%)`">
+          
+          <!-- Testimonial 1 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="bg-card-bg rounded-xl shadow-md p-8 md:p-10 animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+              <!-- Rating (using accent color appropriately) -->
+              <div class="flex mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              </div>
+              
+              <!-- Quote -->
+              <blockquote class="text-xl md:text-2xl font-medium mb-8 text-text-primary">
+                "CravenSEO transformed our online presence. We're now the #1 plumbing service in New Bern, and our calls have increased by 65% since working with their team."
+              </blockquote>
+              
+              <!-- Author info -->
+              <div class="flex items-center">
+                <div class="h-16 w-16 rounded-full overflow-hidden mr-4 border-2 border-bg-tertiary">
+                  <img src="/images/testimonials/john-smith.jpg" alt="John Smith - Owner of Smith Plumbing" class="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p class="font-bold">John Smith</p>
+                  <p class="text-text-secondary text-sm">Owner, Smith Plumbing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="bg-card-bg rounded-xl shadow-md p-8 md:p-10 animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
+              <!-- Rating -->
+              <div class="flex mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              </div>
+              
+              <!-- Quote -->
+              <blockquote class="text-xl md:text-2xl font-medium mb-8 text-text-primary">
+                "Since implementing CravenSEO's local strategy, our dental practice has seen a 40% increase in new patient appointments. The ROI has been phenomenal."
+              </blockquote>
+              
+              <!-- Author info -->
+              <div class="flex items-center">
+                <div class="h-16 w-16 rounded-full overflow-hidden mr-4 border-2 border-bg-tertiary">
+                  <img src="/images/testimonials/sarah-johnson.jpg" alt="Dr. Sarah Johnson - Johnson Family Dental" class="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p class="font-bold">Dr. Sarah Johnson</p>
+                  <p class="text-text-secondary text-sm">Johnson Family Dental</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="bg-card-bg rounded-xl shadow-md p-8 md:p-10 animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+              <!-- Rating -->
+              <div class="flex mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              </div>
+              
+              <!-- Quote -->
+              <blockquote class="text-xl md:text-2xl font-medium mb-8 text-text-primary">
+                "Our restaurant was struggling to get online orders until we started working with CravenSEO. Now we dominate local food searches and our online orders have doubled."
+              </blockquote>
+              
+              <!-- Author info -->
+              <div class="flex items-center">
+                <div class="h-16 w-16 rounded-full overflow-hidden mr-4 border-2 border-bg-tertiary">
+                  <img src="/images/testimonials/mike-roberts.jpg" alt="Mike Roberts - Owner of Coastal Bites" class="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p class="font-bold">Mike Roberts</p>
+                  <p class="text-text-secondary text-sm">Owner, Coastal Bites</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <!-- Navigation dots - accent colors appropriate for interactive elements -->
+      <div class="flex justify-center mt-8 space-x-2">
+        <button @click="activeSlide = 0" :class="{'bg-primary': activeSlide === 0, 'bg-bg-tertiary hover:bg-primary': activeSlide !== 0}" class="w-3 h-3 rounded-full transition-colors duration-300"></button>
+        <button @click="activeSlide = 1" :class="{'bg-primary': activeSlide === 1, 'bg-bg-tertiary hover:bg-primary': activeSlide !== 1}" class="w-3 h-3 rounded-full transition-colors duration-300"></button>
+        <button @click="activeSlide = 2" :class="{'bg-primary': activeSlide === 2, 'bg-bg-tertiary hover:bg-primary': activeSlide !== 2}" class="w-3 h-3 rounded-full transition-colors duration-300"></button>
+      </div>
+      
+      <!-- Navigation arrows - using accent colors appropriately for interactive elements -->
+      <button 
+        @click="activeSlide = (activeSlide - 1 + totalSlides) % totalSlides" 
+        class="absolute top-1/2 -translate-y-1/2 left-0 md:-left-5 lg:-left-10 bg-card-bg rounded-full p-2 shadow-md hover:bg-bg-tertiary transition-colors duration-300 z-10"
+        aria-label="Previous testimonial"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button 
+        @click="activeSlide = (activeSlide + 1) % totalSlides" 
+        class="absolute top-1/2 -translate-y-1/2 right-0 md:-right-5 lg:-right-10 bg-card-bg rounded-full p-2 shadow-md hover:bg-bg-tertiary transition-colors duration-300 z-10"
+        aria-label="Next testimonial"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Client logos - muted, not using accent colors for these background elements -->
+    <div class="mt-20">
+      <h3 class="text-center text-xl font-semibold mb-10 text-text-secondary">Trusted by leading businesses across Eastern NC</h3>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+        <div class="flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+          <img src="/images/clients/client-logo-1.svg" alt="Client Logo" class="h-12 w-auto" />
+        </div>
+        <div class="flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
+          <img src="/images/clients/client-logo-2.svg" alt="Client Logo" class="h-12 w-auto" />
+        </div>
+        <div class="flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+          <img src="/images/clients/client-logo-3.svg" alt="Client Logo" class="h-12 w-auto" />
+        </div>
+        <div class="flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 animate-on-scroll" data-aos="fade-up" data-aos-delay="400">
+          <img src="/images/clients/client-logo-4.svg" alt="Client Logo" class="h-12 w-auto" />
+        </div>
+        <div class="flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 animate-on-scroll" data-aos="fade-up" data-aos-delay="500">
+          <img src="/images/clients/client-logo-5.svg" alt="Client Logo" class="h-12 w-auto" />
+        </div>
+        <div class="flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 animate-on-scroll" data-aos="fade-up" data-aos-delay="600">
+          <img src="/images/clients/client-logo-6.svg" alt="Client Logo" class="h-12 w-auto" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

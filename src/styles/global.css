@@ -23,20 +23,23 @@
 /* CSS Variables for consistent theming */
 :root {
   /* Brand Colors - Updated with new color scheme */
-  --color-dark-slate: #18191a;
-  --color-vibrant-pink: #ff3fbf;
-  --color-mango-orange: #ffb347;
-  --color-mint-green: #7fff9f;
-  --color-dark-purple: #141115;
+  --color-dark-background: #0D0D0D;  /* almost black */
+  --color-light-background: #E4E4E4;  /* light gray background */
+  --color-neon-green: #00FF85;       /* neon green accent */
+  --color-electric-blue: #1E90FF;    /* electric blue accent */
+  --color-vivid-pink: #FF0099;       /* vivid pink for hover effects */
+  --color-pure-white: #FFFFFF;       /* pure white */
+  --color-almost-black: #111111;     /* almost black for text */
   
   /* Derived accents with proper contrast for light mode */
-  --color-primary: var(--color-vibrant-pink);
-  --color-primary-dark: #e01e9e; /* Slightly darker pink for hover states */
-  --color-secondary: var(--color-mint-green);
-  --color-accent: var(--color-mango-orange);
+  --color-primary: var(--color-neon-green);
+  --color-primary-dark: #00cc6b;     /* Slightly darker neon green for hover states */
+  --color-secondary: var(--color-electric-blue);
+  --color-secondary-dark: #0066cc;   /* Darker blue for hover states */
+  --color-accent: var(--color-vivid-pink);
   
   /* Base colors - Light Mode (default) */
-  --color-gray-900: #111827;    /* Text */
+  --color-gray-900: var(--color-almost-black);    /* Text - almost black */
   --color-gray-700: #374151;    /* Subdued text */
   --color-gray-500: #6b7280;    /* Muted text */
   --color-gray-300: #d1d5db;    /* Borders */
@@ -45,16 +48,16 @@
   --color-white: #ffffff;
   --color-black: #000000;
   
-  /* Theme colors (mapped to semantic meanings) */
-  --color-bg-primary: var(--color-white);
-  --color-bg-secondary: var(--color-gray-50);
-  --color-bg-tertiary: var(--color-gray-100);
-  --color-text-primary: var(--color-gray-900);
-  --color-text-secondary: var(--color-gray-700);
-  --color-text-muted: var(--color-gray-500);
-  --color-border: var(--color-gray-300);
-  --color-card-bg: var(--color-white);
-  --color-card-shadow: rgba(0, 0, 0, 0.1);
+  /* Theme colors (mapped to semantic meanings) - Light mode */
+  --color-bg-primary: var(--color-light-background);     /* Main background - light gray */
+  --color-bg-secondary: #f0f0f0;                         /* Secondary background - slightly darker */
+  --color-bg-tertiary: #e0e0e0;                          /* Tertiary background - even darker */
+  --color-text-primary: var(--color-almost-black);        /* Primary text - almost black */
+  --color-text-secondary: #333333;                        /* Secondary text - dark gray */
+  --color-text-muted: #666666;                            /* Muted text - medium gray */
+  --color-border: #cccccc;                                /* Border color - light gray */
+  --color-card-bg: var(--color-white);                    /* Card background - white */
+  --color-card-shadow: rgba(0, 0, 0, 0.1);                /* Card shadow */
   
   /* Typography */
   --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
@@ -98,30 +101,31 @@
 
 /* Dark mode theme variables - Optimized for accessibility with brand colors */
 .dark {
-  /* Base colors - Dark Mode with brand colors */
-  --color-gray-900: #ffffff;    /* Text (inverted to white for maximum contrast) */
+  /* Base colors - Dark Mode with inverted brand colors */
+  --color-gray-900: var(--color-pure-white);    /* Text (inverted to white for maximum contrast) */
   --color-gray-700: #e2e8f0;    /* Subdued text (lighter for better contrast) */
   --color-gray-500: #a0aec0;    /* Muted text (adjusted for 4.5:1 minimum contrast) */
   --color-gray-300: #4a5568;    /* Borders (darker in dark mode) */
   --color-gray-100: #2d3748;    /* Background (darker shade) */
   --color-gray-50: #1a202c;     /* Secondary background (darker shade) */
   
-  /* Derived accent colors for dark mode with enhanced contrast */
-  --color-primary: #ff5ec9;      /* Brightened pink for better visibility on dark */
-  --color-primary-dark: #ff3fbf; /* Original pink now used as the darker variant */
-  --color-secondary: #8affaa;    /* Slightly adjusted mint green for better contrast */
-  --color-accent: #ffc067;       /* Brightened orange for better visibility on dark */
+  /* Inverted color scheme for dark mode */
+  --color-primary: var(--color-neon-green);       /* Keep neon green as primary */
+  --color-primary-dark: #00cc6b;                  /* Slightly darker neon green */
+  --color-secondary: var(--color-electric-blue);  /* Keep electric blue as secondary */
+  --color-secondary-dark: #0066cc;                /* Darker blue */
+  --color-accent: var(--color-vivid-pink);        /* Keep vivid pink as accent */
   
-  /* Theme colors (mapped to semantic meanings) - Using brand colors */
-  --color-bg-primary: var(--color-dark-purple);   /* Main background - dark purple */
-  --color-bg-secondary: var(--color-dark-slate);  /* Secondary background - dark slate */
-  --color-bg-tertiary: #222023;                   /* Tertiary background - slightly lighter than bg-primary */
-  --color-text-primary: #ffffff;                  /* Primary text - white for max contrast */
-  --color-text-secondary: #e2e8f0;                /* Secondary text - light gray */
-  --color-text-muted: #a0aec0;                    /* Muted text - medium gray */
-  --color-border: #4a5568;                        /* Border color - medium dark */
-  --color-card-bg: #222023;                       /* Card background - slightly lighter than dark purple */
-  --color-card-shadow: rgba(0, 0, 0, 0.5);        /* Deeper shadows for dark mode */
+  /* Theme colors for dark mode */
+  --color-bg-primary: var(--color-dark-background);   /* Main background - almost black */
+  --color-bg-secondary: #161616;                      /* Secondary background - slightly lighter black */
+  --color-bg-tertiary: #222222;                       /* Tertiary background - dark gray */
+  --color-text-primary: var(--color-pure-white);      /* Primary text - white for max contrast */
+  --color-text-secondary: #e2e8f0;                    /* Secondary text - light gray */
+  --color-text-muted: #a0aec0;                        /* Muted text - medium gray */
+  --color-border: #4a5568;                            /* Border color - medium dark */
+  --color-card-bg: #161616;                           /* Card background - slightly lighter than main bg */
+  --color-card-shadow: rgba(0, 0, 0, 0.5);            /* Deeper shadows for dark mode */
   
   /* Specially enhanced shadows for dark mode */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
@@ -214,29 +218,32 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, select, textarea,
 
 .btn-primary {
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-dark-background);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-vivid-pink);
 }
 
 .dark .btn-primary {
-  color: var(--color-dark-purple); /* Ensuring text contrast on bright buttons in dark mode */
+  color: var(--color-dark-background); /* Ensuring text contrast on bright buttons in dark mode */
 }
 
 .btn-secondary {
   background-color: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-gray-100);
+  background-color: var(--color-vivid-pink);
+  border-color: var(--color-vivid-pink);
+  color: var(--color-pure-white);
 }
 
 .dark .btn-secondary:hover {
-  background-color: rgba(255, 63, 191, 0.15); /* Subtle hover effect for dark mode */
+  background-color: var(--color-vivid-pink); /* Bright pink hover effect for dark mode */
+  color: var(--color-dark-background);
 }
 
 .btn-lg {

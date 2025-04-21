@@ -1,0 +1,82 @@
+---
+// Hero.astro - Main hero section with proper color usage
+// Primary/secondary colors for main content, accent colors only for highlights
+---
+
+<section class="relative bg-bg-primary text-text-primary overflow-hidden py-20 md:py-28 lg:py-32">
+  <!-- Background pattern element (using secondary color, not accent) -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-full h-full bg-bg-secondary" style="background-image: radial-gradient(circle at 25px 25px, var(--color-bg-tertiary) 2%, transparent 0%), radial-gradient(circle at 75px 75px, var(--color-bg-tertiary) 2%, transparent 0%); background-size: 100px 100px;"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col lg:flex-row items-center">
+      <!-- Left content / Copy -->
+      <div class="lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
+        <div class="animate-on-scroll" data-aos="fade-up">
+          <!-- Small highlight using accent color -->
+          <div class="inline-block px-4 py-1 mb-6 rounded-full bg-bg-tertiary">
+            <span class="text-sm font-semibold text-primary">Eastern NC's Premier SEO Agency</span>
+          </div>
+          
+          <!-- Main heading - using primary text color, not accent -->
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Dominate Local Search Results in <span class="text-gradient">Eastern North Carolina</span>
+          </h1>
+          
+          <!-- Subtitle - using secondary text color, not accent -->
+          <p class="text-text-secondary text-xl mb-8 max-w-lg">
+            Specialized SEO services that help small and regional businesses outrank their competition and attract more local customers.
+          </p>
+          
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <!-- Primary CTA - accent color is appropriate for buttons -->
+            <a href="#contact" class="btn btn-primary btn-lg animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
+              Get Your Free SEO Audit
+            </a>
+            
+            <!-- Secondary CTA - transparent with accent border -->
+            <a href="#how-it-works" class="btn btn-secondary btn-lg animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+              See How It Works
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right content / Image -->
+      <div class="lg:w-1/2 relative animate-on-scroll" data-aos="fade-left">
+        <div class="relative z-10 rounded-lg shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+          <img 
+            src="/images/local-business-map.webp" 
+            alt="Local business search results showing high rankings" 
+            class="w-full h-auto"
+            width="600" 
+            height="400"
+            loading="eager"
+          />
+        </div>
+        
+        <!-- Decorative elements using accent color sparingly -->
+        <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-primary opacity-20 blur-xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-secondary opacity-20 blur-xl"></div>
+        
+        <!-- Stats floating card - primary background with accent text highlights -->
+        <div class="absolute bottom-4 -left-4 md:-left-12 bg-card-bg shadow-lg rounded-lg p-4 animate-on-scroll" data-aos="fade-up" data-aos-delay="400">
+          <p class="text-text-primary font-medium">Average Ranking Improvement</p>
+          <p class="text-3xl font-bold">
+            <span class="text-primary" data-count-to="37" data-count-from="0" data-count-duration="2000">37</span>%
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator using accent color appropriately for a small UI element -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:flex flex-col items-center">
+      <span class="text-sm text-text-secondary mb-2">Scroll to explore</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </div>
+</section>

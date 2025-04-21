@@ -1,0 +1,223 @@
+---
+/**
+ * OffCanvas.astro
+ * A reusable offcanvas component for displaying additional content
+ */
+
+interface Props {
+  id: string; // Unique ID for the offcanvas
+  title: string; // Title to display in the header
+  position?: 'right' | 'left'; // Position from which the offcanvas slides in
+}
+
+const { id, title, position = 'right' } = Astro.props;
+---
+
+<div 
+  id={id}
+  class={`offcanvas offcanvas-${position} animate-on-scroll`} 
+  aria-labelledby={`${id}-label`}
+  data-offcanvas
+>
+  <div class="offcanvas-header">
+    <h3 id={`${id}-label`} class="offcanvas-title">{title}</h3>
+    <button
+      type="button"
+      class="offcanvas-close"
+      aria-label="Close"
+      data-close-offcanvas
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <slot />
+  </div>
+</div>
+
+<!-- Overlay for offcanvas background -->
+<div class="offcanvas-backdrop" aria-hidden="true" data-offcanvas-backdrop></div>
+
+<style>
+  .offcanvas {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1050;
+    width: min(90vw, 400px);
+    background-color: var(--color-card-bg, #fff);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+  }
+
+  .offcanvas-right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  .offcanvas-left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  .offcanvas.show {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border, rgba(229, 231, 235, 1));
+  }
+
+  .offcanvas-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+
+  .offcanvas-close {
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .offcanvas-close:hover {
+    color: var(--color-text-primary);
+  }
+
+  .offcanvas-body {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .offcanvas-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .offcanvas-backdrop.show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Animation for content inside the offcanvas */
+  .offcanvas.show .offcanvas-body > * {
+    animation: slideIn 0.4s forwards;
+    animation-delay: calc(var(--animation-order, 0) * 100ms);
+    opacity: 0;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* For reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .offcanvas {
+      transition: transform 0.1s ease-in-out;
+    }
+    
+    .offcanvas-backdrop {
+      transition: opacity 0.1s linear;
+    }
+
+    .offcanvas.show .offcanvas-body > * {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Get all trigger elements that should open an offcanvas
+    const triggers = document.querySelectorAll('[data-open-offcanvas]');
+    const closeButtons = document.querySelectorAll('[data-close-offcanvas]');
+    const backdrop = document.querySelector('[data-offcanvas-backdrop]');
+    
+    // Function to open an offcanvas
+    function openOffCanvas(offcanvasId) {
+      const offcanvas = document.getElementById(offcanvasId);
+      if (!offcanvas) return;
+      
+      // Show the backdrop
+      backdrop?.classList.add('show');
+      
+      // Show the offcanvas
+      offcanvas.classList.add('show');
+      
+      // Set focus on the first focusable element
+      setTimeout(() => {
+        const focusable = offcanvas.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusable.length) focusable[0].focus();
+      }, 300);
+      
+      // Prevent body scrolling
+      document.body.style.overflow = 'hidden';
+    }
+    
+    // Function to close all offcanvas elements
+    function closeOffCanvas() {
+      const openOffcanvas = document.querySelectorAll('.offcanvas.show');
+      openOffcanvas.forEach(element => {
+        element.classList.remove('show');
+      });
+      
+      backdrop?.classList.remove('show');
+      
+      // Re-enable body scrolling
+      document.body.style.overflow = '';
+    }
+    
+    // Add click handlers to trigger elements
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = trigger.getAttribute('data-open-offcanvas');
+        openOffCanvas(targetId);
+      });
+    });
+    
+    // Add click handlers to close buttons
+    closeButtons.forEach(button => {
+      button.addEventListener('click', closeOffCanvas);
+    });
+    
+    // Close when clicking on backdrop
+    backdrop?.addEventListener('click', closeOffCanvas);
+    
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeOffCanvas();
+    });
+  });
+</script>

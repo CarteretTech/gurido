@@ -1,0 +1,160 @@
+---
+// Features.astro - Website features section with proper color usage
+// Primary/secondary colors for main content, accent colors only for highlights
+---
+
+<section id="features" class="py-20 bg-bg-secondary text-text-primary">
+  <div class="container mx-auto px-6">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Powerful SEO Features Built for <span class="text-gradient">Local Businesses</span>
+      </h2>
+      <p class="text-text-secondary text-lg">
+        Our comprehensive approach to SEO helps small and regional businesses establish a dominant online presence in Eastern North Carolina.
+      </p>
+    </div>
+    
+    <!-- Features grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <!-- Feature 1 -->
+      <div class="bg-card-bg rounded-xl shadow-md p-6 transition-transform hover:translate-y-[-5px] animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-14 w-14 rounded-lg bg-bg-tertiary flex items-center justify-center mb-6">
+          <!-- Icon with primary accent color - appropriate for small icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Local SEO Optimization</h3>
+        <p class="text-text-secondary mb-4">
+          Targeted strategies to rank for location-based searches and capture customers in your service area.
+        </p>
+        <!-- Link using accent color - appropriate for links -->
+        <a href="/services/local-seo" class="inline-flex items-center text-primary hover:text-accent transition-colors">
+          Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="bg-card-bg rounded-xl shadow-md p-6 transition-transform hover:translate-y-[-5px] animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-14 w-14 rounded-lg bg-bg-tertiary flex items-center justify-center mb-6">
+          <!-- Icon with secondary accent color -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Content Strategy</h3>
+        <p class="text-text-secondary mb-4">
+          Engaging, locally-focused content that resonates with your audience and establishes your authority.
+        </p>
+        <a href="/services/content-marketing" class="inline-flex items-center text-secondary hover:text-accent transition-colors">
+          Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="bg-card-bg rounded-xl shadow-md p-6 transition-transform hover:translate-y-[-5px] animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-14 w-14 rounded-lg bg-bg-tertiary flex items-center justify-center mb-6">
+          <!-- Icon with accent color -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Keyword Research</h3>
+        <p class="text-text-secondary mb-4">
+          Discover high-value, low-competition keywords specifically for the Eastern NC market.
+        </p>
+        <a href="/services/keyword-research" class="inline-flex items-center text-accent hover:text-primary transition-colors">
+          Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Feature 4 -->
+      <div class="bg-card-bg rounded-xl shadow-md p-6 transition-transform hover:translate-y-[-5px] animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-14 w-14 rounded-lg bg-bg-tertiary flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Technical SEO</h3>
+        <p class="text-text-secondary mb-4">
+          Ensure your website meets search engine standards with thorough technical optimization.
+        </p>
+        <a href="/services/technical-seo" class="inline-flex items-center text-primary hover:text-accent transition-colors">
+          Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Feature 5 -->
+      <div class="bg-card-bg rounded-xl shadow-md p-6 transition-transform hover:translate-y-[-5px] animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-14 w-14 rounded-lg bg-bg-tertiary flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Analytics & Insights</h3>
+        <p class="text-text-secondary mb-4">
+          Comprehensive reporting and data analysis to track your performance and ROI.
+        </p>
+        <a href="/services/analytics" class="inline-flex items-center text-secondary hover:text-accent transition-colors">
+          Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Feature 6 -->
+      <div class="bg-card-bg rounded-xl shadow-md p-6 transition-transform hover:translate-y-[-5px] animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-14 w-14 rounded-lg bg-bg-tertiary flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Competitor Analysis</h3>
+        <p class="text-text-secondary mb-4">
+          Identify and outmaneuver your local competitors with strategic SEO positioning.
+        </p>
+        <a href="/services/competitor-analysis" class="inline-flex items-center text-accent hover:text-primary transition-colors">
+          Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- CTA Card - Primary background with accent for button only -->
+    <div class="mt-20 rounded-2xl bg-bg-tertiary shadow-lg p-8 md:p-10 relative overflow-hidden animate-on-scroll" data-aos="fade-up">
+      <!-- Decorative elements using accent colors sparingly -->
+      <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-primary opacity-10 blur-2xl"></div>
+      <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-secondary opacity-10 blur-2xl"></div>
+      
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-4">Ready to grow your local business?</h3>
+          <p class="text-text-secondary max-w-xl">
+            Our SEO strategies are designed specifically for businesses in Eastern North Carolina. Get started today with a free consultation.
+          </p>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-lg whitespace-nowrap animate-on-scroll" data-aos="fade-up">
+          Get Your Free SEO Audit
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
