@@ -1,0 +1,227 @@
+[
+  {
+    "id": "seo-audit",
+    "category": "foundational",
+    "name": "SEO Audit",
+    "shortDescription": "A comprehensive analysis of your website's current SEO performance, identifying strengths, weaknesses, and opportunities.",
+    "description": "Our SEO audit provides a thorough analysis of your website's current performance, identifying strengths, weaknesses, and areas for improvement across technical, on-page, and off-page SEO. We evaluate site architecture, speed, mobile-friendliness, content, and backlink profile to deliver actionable recommendations for improvement.",
+    "features": [
+      "Technical SEO analysis",
+      "On-page content evaluation",
+      "Competitor benchmarking",
+      "Backlink profile analysis",
+      "Site architecture review",
+      "Speed and performance testing",
+      "Mobile optimization check",
+      "Prioritized action plan"
+    ],
+    "pricing": {
+      "basic": 250,
+      "standard": 500,
+      "premium": 1200
+    },
+    "icon": "magnifying-glass",
+    "image": "/images/services/seo-audit.jpg",
+    "cta": "Get Your SEO Audit",
+    "metaTitle": "Professional SEO Audit Services | CravenSEO | Eastern NC",
+    "metaDescription": "Get a comprehensive SEO audit for your Eastern NC business. Identify technical issues, content gaps, and opportunities to outrank your competition.",
+    "keywords": "seo audit, website analysis, technical seo, eastern nc seo audit, local business seo",
+    "schema": {
+      "@type": "Service",
+      "serviceType": "SEO Audit",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "CravenSEO"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "35.1085",
+          "longitude": "-77.0441"
+        },
+        "geoRadius": "100 mi"
+      }
+    }
+  },
+  {
+    "id": "keyword-research",
+    "category": "foundational",
+    "name": "Keyword Research & Strategy",
+    "shortDescription": "Discover the most effective keywords for attracting your ideal customers in Eastern NC.",
+    "description": "Our keyword research and strategy service identifies the most relevant and high-potential keywords that your target audience uses. We analyze search volume, keyword difficulty, and search intent to develop a targeted keyword strategy that drives qualified traffic to your website and helps you dominate local search results.",
+    "features": [
+      "Local keyword opportunity analysis",
+      "Competitor keyword gap analysis",
+      "Long-tail keyword discovery",
+      "Search intent mapping",
+      "Keyword difficulty assessment",
+      "Content opportunity planning",
+      "Industry-specific terminology research",
+      "Seasonal trend identification"
+    ],
+    "pricing": {
+      "basic": 200,
+      "standard": 400,
+      "premium": 750
+    },
+    "icon": "key",
+    "image": "/images/services/keyword-research.jpg",
+    "cta": "Unlock Your Keyword Strategy",
+    "metaTitle": "Local Keyword Research & Strategy Services | CravenSEO",
+    "metaDescription": "Discover the most effective keywords for your Eastern NC business. Our keyword research unlocks local SEO opportunities your competitors are missing.",
+    "keywords": "keyword research, local seo keywords, eastern nc seo, search intent, long-tail keywords, competitor analysis",
+    "schema": {
+      "@type": "Service",
+      "serviceType": "Keyword Research",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "CravenSEO"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "35.1085",
+          "longitude": "-77.0441"
+        },
+        "geoRadius": "100 mi"
+      }
+    }
+  },
+  {
+    "id": "local-seo",
+    "category": "specialized",
+    "name": "Local SEO",
+    "shortDescription": "Dominate local search results and attract nearby customers actively looking for your products or services.",
+    "description": "Our Local SEO service helps your business stand out in local search results, Google Maps, and mobile searches. We optimize your Google Business Profile, build local citations, manage reviews, and implement location-specific content strategies to ensure your business is found by customers in your service area across Eastern North Carolina.",
+    "features": [
+      "Google Business Profile optimization",
+      "Local citation building",
+      "Review management strategy",
+      "Local landing page creation",
+      "Local structured data markup",
+      "Competitor location analysis",
+      "Local link building",
+      "NAP consistency audit and correction"
+    ],
+    "pricing": {
+      "basic": 300,
+      "standard": 600,
+      "premium": 1000
+    },
+    "icon": "map-pin",
+    "image": "/images/services/local-seo.jpg",
+    "cta": "Dominate Local Search",
+    "metaTitle": "Local SEO Services in Eastern NC | CravenSEO",
+    "metaDescription": "Dominate local search results in Eastern North Carolina. Our Local SEO services help your business appear when nearby customers are searching for your services.",
+    "keywords": "local seo, google business profile, local citations, eastern nc seo, maps optimization, local search",
+    "schema": {
+      "@type": "Service",
+      "serviceType": "Local SEO",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "CravenSEO"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "35.1085",
+          "longitude": "-77.0441"
+        },
+        "geoRadius": "100 mi"
+      }
+    }
+  },
+  {
+    "id": "content-optimization",
+    "category": "on-page",
+    "name": "Content Optimization",
+    "shortDescription": "Transform your existing content into high-performing SEO assets that rank and convert.",
+    "description": "Our content optimization service analyzes and enhances your existing website content to align with target keywords, improve readability, and boost user engagement. We optimize title tags, meta descriptions, heading structure, and content flow to make your pages more appealing to both search engines and human readers.",
+    "features": [
+      "Page-by-page content analysis",
+      "Title tag and meta description optimization",
+      "Header tag restructuring",
+      "Content readability improvement",
+      "Internal linking strategy",
+      "Image optimization with alt text",
+      "Featured snippet optimization",
+      "Call-to-action enhancement"
+    ],
+    "pricing": {
+      "basic": 175,
+      "standard": 350,
+      "premium": 700
+    },
+    "icon": "pencil",
+    "image": "/images/services/content-optimization.jpg",
+    "cta": "Optimize Your Content",
+    "metaTitle": "Content Optimization Services | CravenSEO | Eastern NC",
+    "metaDescription": "Transform your existing content into SEO-optimized assets that rank higher and convert better. Our content optimization services enhance visibility and engagement.",
+    "keywords": "content optimization, on-page seo, title tags, meta descriptions, eastern nc seo, content strategy",
+    "schema": {
+      "@type": "Service",
+      "serviceType": "Content Optimization",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "CravenSEO"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "35.1085",
+          "longitude": "-77.0441"
+        },
+        "geoRadius": "100 mi"
+      }
+    }
+  },
+  {
+    "id": "technical-seo",
+    "category": "technical",
+    "name": "Technical SEO",
+    "shortDescription": "Ensure search engines can effectively crawl, index, and understand your website's content.",
+    "description": "Our Technical SEO service identifies and resolves technical issues that may hinder search engine crawling and indexing, such as crawl errors, broken links, and duplicate content. We improve website loading speed, mobile responsiveness, and implement structured data to enhance your site's visibility in search results.",
+    "features": [
+      "Site crawlability analysis",
+      "Indexation management",
+      "Page speed optimization",
+      "Mobile responsiveness testing",
+      "XML sitemap optimization",
+      "Robots.txt configuration",
+      "Structured data implementation",
+      "HTTPS security verification"
+    ],
+    "pricing": {
+      "basic": 350,
+      "standard": 700,
+      "premium": 1500
+    },
+    "icon": "code",
+    "image": "/images/services/technical-seo.jpg",
+    "cta": "Fix Technical SEO Issues",
+    "metaTitle": "Technical SEO Services | CravenSEO | Eastern NC",
+    "metaDescription": "Resolve technical SEO issues that are holding back your website's performance. Our technical SEO services improve crawling, indexing, and site speed.",
+    "keywords": "technical seo, page speed, mobile optimization, structured data, eastern nc seo, site architecture",
+    "schema": {
+      "@type": "Service",
+      "serviceType": "Technical SEO",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "CravenSEO"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "35.1085",
+          "longitude": "-77.0441"
+        },
+        "geoRadius": "100 mi"
+      }
+    }
+  }
+]

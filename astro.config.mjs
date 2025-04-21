@@ -1,13 +1,18 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  // Add your domain here
-  site: "https://yoursite.com/",
-  integrations: [sitemap()]
+  // Set the CravenSEO domain here
+  site: "https://cravenseo.com/",
+  integrations: [
+    tailwind(),
+    sitemap()
+  ],
+  // Performance optimizations
+  compressHTML: true,
+  build: {
+    inlineStylesheets: 'auto', // Inline small stylesheets for performance
+  }
 });

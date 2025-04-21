@@ -1,7 +1,518 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Content from "@/components/landing/Content.astro";
+import Layout from "../layouts/Layout.astro";
+import services from "../data/services.json";
+
+// Group services by category
+const serviceCategories = {
+  foundational: services.filter(service => service.category === "foundational"),
+  "on-page": services.filter(service => service.category === "on-page"),
+  technical: services.filter(service => service.category === "technical"),
+  specialized: services.filter(service => service.category === "specialized")
+};
+
+// SEO metadata
+const title = "CravenSEO | Local SEO Services for Eastern NC Businesses";
+const description = "Dominate your local market with CravenSEO's specialized search engine optimization services for Eastern North Carolina businesses. Transparent pricing, measurable results.";
 ---
-<BaseLayout>
-  <Content />
-</BaseLayout>
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-primary/10 to-secondary/5 dark:from-dark-purple dark:to-dark-slate/95 overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+        <div class="lg:w-1/2 animate-on-scroll">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            Dominate Your <span class="text-gradient">Local Market</span> With SEO
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+            We help small businesses in Eastern North Carolina grow their online presence and attract more local customers with data-driven SEO strategies.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a 
+              href="/services" 
+              class="btn btn-primary btn-lg"
+            >
+              Explore Our Services
+            </a>
+            <a 
+              href="#contact" 
+              class="btn btn-secondary btn-lg"
+            >
+              Get a Free Consultation
+            </a>
+          </div>
+        </div>
+        
+        <div 
+          class="lg:w-2/5 relative animate-on-scroll" 
+          style="animation-delay: 200ms;"
+        >
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur-lg opacity-70 animate-pulse" style="animation-duration: 3s;"></div>
+            <div class="relative rounded-lg overflow-hidden shadow-xl">
+              <img 
+                src="/images/hero-image.jpg" 
+                alt="Eastern NC business owner reviewing SEO results"
+                class="w-full object-cover"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-primary rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
+              <div class="transform -rotate-12">Local<br>SEO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Animated Background Elements -->
+    <div class="absolute top-20 left-10 w-32 h-32 rounded-full bg-primary/10 animate-pulse" style="animation-duration: 3s;"></div>
+    <div class="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-secondary/10 animate-pulse" style="animation-duration: 4s;"></div>
+    <div class="absolute top-40 right-[20%] w-24 h-24 rounded-full bg-accent/10 animate-pulse" style="animation-duration: 5s;"></div>
+  </section>
+
+  <!-- Trusted By Section -->
+  <section class="py-12 bg-white dark:bg-dark-purple">
+    <div class="container mx-auto px-6">
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-8 animate-on-scroll">Trusted by Eastern NC businesses</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <div class="w-32 opacity-70 hover:opacity-100 transition-opacity animate-on-scroll">
+          <img src="/images/clients/client-1.png" alt="Client logo" class="w-full grayscale hover:grayscale-0 transition-all">
+        </div>
+        <div class="w-32 opacity-70 hover:opacity-100 transition-opacity animate-on-scroll" style="animation-delay: 100ms;">
+          <img src="/images/clients/client-2.png" alt="Client logo" class="w-full grayscale hover:grayscale-0 transition-all">
+        </div>
+        <div class="w-32 opacity-70 hover:opacity-100 transition-opacity animate-on-scroll" style="animation-delay: 200ms;">
+          <img src="/images/clients/client-3.png" alt="Client logo" class="w-full grayscale hover:grayscale-0 transition-all">
+        </div>
+        <div class="w-32 opacity-70 hover:opacity-100 transition-opacity animate-on-scroll" style="animation-delay: 300ms;">
+          <img src="/images/clients/client-4.png" alt="Client logo" class="w-full grayscale hover:grayscale-0 transition-all">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Services Section -->
+  <section id="services" class="py-20 bg-gray-50 dark:bg-dark-slate">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          SEO Services for Eastern NC Businesses
+        </h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          Our data-driven approach combines technical expertise, content strategy, and local market knowledge to improve your search rankings and grow your business.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {services.slice(0, 3).map((service, index) => (
+          <div 
+            class="bg-white dark:bg-card-bg rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-on-scroll" 
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <a href={`/services/${service.id}`} class="block h-full">
+              <div class="p-6 flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      {service.icon === 'magnifying-glass' && (
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      )}
+                      {service.icon === 'key' && (
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                      )}
+                      {service.icon === 'map-pin' && (
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      )}
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold ml-4 text-gray-900 dark:text-white">{service.name}</h3>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-300 flex-grow mb-4">{service.shortDescription}</p>
+                
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500 dark:text-gray-400 capitalize">${service.pricing.basic}+ /mo</span>
+                  <span class="text-primary font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                    Learn more
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center animate-on-scroll">
+        <a 
+          href="/services" 
+          class="btn btn-secondary"
+        >
+          View All Services
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- How It Works Section -->
+  <section class="py-20 bg-white dark:bg-dark-purple">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          How We Help You Dominate Local Search
+        </h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          Our proven process combines data-driven SEO tactics with Eastern NC market expertise
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <!-- Process Steps -->
+        <div class="relative">
+          <!-- Timeline line -->
+          <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600 transform md:translate-x-0 translate-x-7"></div>
+          
+          <!-- Step 1 -->
+          <div class="relative flex flex-col md:flex-row items-start mb-12 animate-on-scroll">
+            <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Discovery & Analysis</h3>
+              <p class="text-gray-700 dark:text-gray-300">We analyze your business, competitors, and target market to identify SEO opportunities unique to Eastern NC.</p>
+            </div>
+            <div class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold z-10 mb-4 md:mx-auto md:mb-0 shadow-md">1</div>
+            <div class="md:w-1/2 md:pl-12 md:block hidden"></div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="relative flex flex-col md:flex-row items-start mb-12 animate-on-scroll" style="animation-delay: 100ms;">
+            <div class="md:w-1/2 md:pr-12 md:text-right md:block hidden"></div>
+            <div class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold z-10 mb-4 md:mx-auto md:mb-0 shadow-md">2</div>
+            <div class="md:w-1/2 md:pl-12">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Custom Strategy Development</h3>
+              <p class="text-gray-700 dark:text-gray-300">We create a tailored SEO plan targeting your specific business goals and local Eastern NC market.</p>
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="relative flex flex-col md:flex-row items-start mb-12 animate-on-scroll" style="animation-delay: 200ms;">
+            <div class="md:w-1/2 md:pr-12 md:text-right">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Implementation & Optimization</h3>
+              <p class="text-gray-700 dark:text-gray-300">Our team executes the strategy with precision, optimizing both on-site and off-site factors for maximum impact.</p>
+            </div>
+            <div class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold z-10 mb-4 md:mx-auto md:mb-0 shadow-md">3</div>
+            <div class="md:w-1/2 md:pl-12 md:block hidden"></div>
+          </div>
+          
+          <!-- Step 4 -->
+          <div class="relative flex flex-col md:flex-row items-start animate-on-scroll" style="animation-delay: 300ms;">
+            <div class="md:w-1/2 md:pr-12 md:text-right md:block hidden"></div>
+            <div class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold z-10 mb-4 md:mx-auto md:mb-0 shadow-md">4</div>
+            <div class="md:w-1/2 md:pl-12">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Monitoring & Growth</h3>
+              <p class="text-gray-700 dark:text-gray-300">We track results, provide transparent reporting, and continuously refine our approach to maximize your ROI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Results Section -->
+  <section id="results" class="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Results That Speak for Themselves
+        </h2>
+        <p class="text-lg opacity-90">
+          We've helped businesses across Eastern North Carolina achieve measurable growth
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center animate-on-scroll">
+          <div class="text-5xl md:text-6xl font-bold mb-2" data-count-to="73" data-count-duration="2000">73</div>
+          <div class="text-xl font-medium opacity-90 mb-3">%</div>
+          <p class="opacity-80">Average increase in organic search traffic for our clients</p>
+        </div>
+        
+        <div class="text-center animate-on-scroll" style="animation-delay: 200ms;">
+          <div class="text-5xl md:text-6xl font-bold mb-2" data-count-to="89" data-count-duration="2000">89</div>
+          <div class="text-xl font-medium opacity-90 mb-3">%</div>
+          <p class="opacity-80">Of our clients rank on the first page for their target keywords</p>
+        </div>
+        
+        <div class="text-center animate-on-scroll" style="animation-delay: 400ms;">
+          <div class="text-5xl md:text-6xl font-bold mb-2" data-count-to="42" data-count-duration="2000">42</div>
+          <div class="text-xl font-medium opacity-90 mb-3">%</div>
+          <p class="opacity-80">Average increase in leads from organic search</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 bg-white dark:bg-dark-purple">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          What Our Clients Say
+        </h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          Don't just take our word for it — hear from Eastern NC businesses we've helped
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-gray-50 dark:bg-card-bg p-6 rounded-lg shadow-sm animate-on-scroll">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="/images/testimonials/testimonial-1.jpg" alt="Client" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white">Michael Thompson</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Marine Services, New Bern</p>
+            </div>
+          </div>
+          <div class="text-yellow-500 mb-3 flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300">"CravenSEO transformed our online presence. We've seen a 85% increase in leads coming from Google searches. Their local SEO expertise is unmatched."</p>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="bg-gray-50 dark:bg-card-bg p-6 rounded-lg shadow-sm animate-on-scroll" style="animation-delay: 200ms;">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="/images/testimonials/testimonial-2.jpg" alt="Client" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white">Sarah Johnson</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Riverside Restaurant, Kinston</p>
+            </div>
+          </div>
+          <div class="text-yellow-500 mb-3 flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300">"The team at CravenSEO understands the unique challenges of running a restaurant in Eastern NC. Their work improved our visibility on Google Maps and helped us attract tourists and locals alike."</p>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="bg-gray-50 dark:bg-card-bg p-6 rounded-lg shadow-sm animate-on-scroll" style="animation-delay: 400ms;">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="/images/testimonials/testimonial-3.jpg" alt="Client" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white">David Wilson</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Wilson Home Services, Greenville</p>
+            </div>
+          </div>
+          <div class="text-yellow-500 mb-3 flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300">"I was skeptical about SEO at first, but the results speak for themselves. CravenSEO's approach is transparent, and they've helped us rank #1 for all our target keywords in the Greenville area."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-50 dark:bg-dark-slate">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="animate-on-scroll">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              Ready to Dominate Local Search?
+            </h2>
+            <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+              Schedule a free consultation to discuss how our SEO services can help your Eastern NC business grow.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="mt-1 text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <h4 class="font-bold text-gray-900 dark:text-white">Address</h4>
+                  <p class="text-gray-700 dark:text-gray-300">123 Main Street, New Bern, NC 28560</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="mt-1 text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <h4 class="font-bold text-gray-900 dark:text-white">Phone</h4>
+                  <p class="text-gray-700 dark:text-gray-300">(252) 555-1234</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="mt-1 text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <h4 class="font-bold text-gray-900 dark:text-white">Email</h4>
+                  <p class="text-gray-700 dark:text-gray-300">info@cravenseo.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-card-bg p-6 rounded-lg shadow-md animate-on-scroll" style="animation-delay: 200ms;">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h3>
+            <form>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-dark-slate dark:text-white"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-dark-slate dark:text-white"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+              <div class="mb-6">
+                <label for="business" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Business</label>
+                <input 
+                  type="text" 
+                  id="business" 
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-dark-slate dark:text-white"
+                  placeholder="Your business name"
+                />
+              </div>
+              <div class="mb-6">
+                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                <textarea 
+                  id="message" 
+                  rows="4" 
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-dark-slate dark:text-white"
+                  placeholder="How can we help you?"
+                ></textarea>
+              </div>
+              <button 
+                type="submit" 
+                class="w-full py-3 px-4 bg-primary text-white dark:text-dark-purple font-bold rounded-md hover:bg-primary-dark transition-colors duration-300"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Add structured data for LocalBusiness -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CravenSEO",
+  "description": "Local SEO services for small businesses in Eastern North Carolina.",
+  "url": "https://cravenseo.com",
+  "logo": "https://cravenseo.com/images/logo.png",
+  "image": "https://cravenseo.com/images/office.jpg",
+  "telephone": "+12525551234",
+  "email": "info@cravenseo.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main Street",
+    "addressLocality": "New Bern",
+    "addressRegion": "NC",
+    "postalCode": "28560",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "35.1085",
+    "longitude": "-77.0441"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/cravenseo",
+    "https://twitter.com/cravenseo",
+    "https://www.instagram.com/cravenseo",
+    "https://www.linkedin.com/company/cravenseo"
+  ]
+})} />

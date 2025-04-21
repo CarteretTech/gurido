@@ -1,0 +1,236 @@
+---
+/**
+ * ServicePricing.astro
+ * Displays pricing options for a service with animated features
+ */
+
+interface Props {
+  service: {
+    name: string;
+    pricing: {
+      basic: number;
+      standard: number;
+      premium: number;
+    };
+    features: string[];
+  };
+}
+
+const { service } = Astro.props;
+
+// Define what features are included in each plan
+const basicFeatures = service.features.slice(0, 3);
+const standardFeatures = service.features.slice(0, 6);
+const premiumFeatures = service.features;
+
+// Helper function to format price
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0
+  }).format(price);
+};
+---
+
+<div class="pricing-section py-16" x-data="{ activeTab: 'monthly' }">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-4 text-text-primary animate-on-scroll">{service.name} Pricing</h2>
+    <p class="text-center text-text-secondary mb-12 max-w-2xl mx-auto animate-on-scroll">
+      Choose the perfect plan for your business needs. All plans can be customized to your specific requirements.
+    </p>
+
+    <!-- Pricing Toggle -->
+    <div class="flex justify-center mb-10 animate-on-scroll">
+      <div class="bg-bg-tertiary p-1 rounded-full inline-flex">
+        <button 
+          @click="activeTab = 'monthly'" 
+          :class="{'bg-primary text-white': activeTab === 'monthly', 'text-text-secondary': activeTab !== 'monthly'}"
+          class="py-2 px-6 rounded-full transition-all duration-200 focus:outline-none"
+        >
+          Monthly
+        </button>
+        <button 
+          @click="activeTab = 'annually'" 
+          :class="{'bg-primary text-white': activeTab === 'annually', 'text-text-secondary': activeTab !== 'annually'}"
+          class="py-2 px-6 rounded-full transition-all duration-200 focus:outline-none"
+        >
+          Annually <span class="text-xs font-semibold text-green-500">Save 20%</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Basic Plan -->
+      <div class="pricing-card bg-card-bg rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl animate-on-scroll">
+        <div class="p-6 border-b border-border">
+          <h3 class="text-xl font-bold text-text-primary mb-2">Basic</h3>
+          <p class="text-text-secondary mb-6 text-sm">Perfect for small businesses just getting started with SEO</p>
+          
+          <div class="mb-4">
+            <div x-show="activeTab === 'monthly'" class="price-tag">
+              <span class="text-4xl font-bold text-text-primary">{formatPrice(service.pricing.basic)}</span>
+              <span class="text-text-muted">/mo</span>
+            </div>
+            <div x-show="activeTab === 'annually'" class="price-tag">
+              <span class="text-4xl font-bold text-text-primary">{formatPrice(service.pricing.basic * 0.8)}</span>
+              <span class="text-text-muted">/mo</span>
+              <div class="text-sm text-green-500 font-medium">Billed annually</div>
+            </div>
+          </div>
+          
+          <a href="/contact" class="block w-full py-3 px-4 bg-card-bg text-primary border border-primary rounded-md text-center font-medium hover:bg-primary hover:text-white transition-all duration-200">
+            Get Started
+          </a>
+        </div>
+        <div class="p-6">
+          <h4 class="font-medium text-text-primary mb-4">What's included:</h4>
+          <ul class="space-y-3">
+            {basicFeatures.map((feature) => (
+              <li class="flex items-center text-text-secondary animate-on-scroll">
+                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Standard Plan -->
+      <div class="pricing-card relative bg-card-bg rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl transform md:scale-105 z-10 animate-on-scroll">
+        <div class="absolute top-0 right-0">
+          <div class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+        </div>
+        <div class="p-6 border-b border-border bg-primary/5 dark:bg-primary/10">
+          <h3 class="text-xl font-bold text-text-primary mb-2">Standard</h3>
+          <p class="text-text-secondary mb-6 text-sm">Comprehensive SEO solution for growing businesses</p>
+          
+          <div class="mb-4">
+            <div x-show="activeTab === 'monthly'" class="price-tag">
+              <span class="text-4xl font-bold text-text-primary">{formatPrice(service.pricing.standard)}</span>
+              <span class="text-text-muted">/mo</span>
+            </div>
+            <div x-show="activeTab === 'annually'" class="price-tag">
+              <span class="text-4xl font-bold text-text-primary">{formatPrice(service.pricing.standard * 0.8)}</span>
+              <span class="text-text-muted">/mo</span>
+              <div class="text-sm text-green-500 font-medium">Billed annually</div>
+            </div>
+          </div>
+          
+          <a href="/contact" class="block w-full py-3 px-4 bg-primary text-white rounded-md text-center font-medium hover:bg-primary-dark transition-all duration-200">
+            Get Started
+          </a>
+        </div>
+        <div class="p-6">
+          <h4 class="font-medium text-text-primary mb-4">Everything in Basic, plus:</h4>
+          <ul class="space-y-3">
+            {standardFeatures.slice(3).map((feature) => (
+              <li class="flex items-center text-text-secondary animate-on-scroll">
+                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="pricing-card bg-card-bg rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl animate-on-scroll">
+        <div class="p-6 border-b border-border">
+          <h3 class="text-xl font-bold text-text-primary mb-2">Premium</h3>
+          <p class="text-text-secondary mb-6 text-sm">Advanced SEO solutions for established businesses</p>
+          
+          <div class="mb-4">
+            <div x-show="activeTab === 'monthly'" class="price-tag">
+              <span class="text-4xl font-bold text-text-primary">{formatPrice(service.pricing.premium)}</span>
+              <span class="text-text-muted">/mo</span>
+            </div>
+            <div x-show="activeTab === 'annually'" class="price-tag">
+              <span class="text-4xl font-bold text-text-primary">{formatPrice(service.pricing.premium * 0.8)}</span>
+              <span class="text-text-muted">/mo</span>
+              <div class="text-sm text-green-500 font-medium">Billed annually</div>
+            </div>
+          </div>
+          
+          <a href="/contact" class="block w-full py-3 px-4 bg-card-bg text-primary border border-primary rounded-md text-center font-medium hover:bg-primary hover:text-white transition-all duration-200">
+            Get Started
+          </a>
+        </div>
+        <div class="p-6">
+          <h4 class="font-medium text-text-primary mb-4">Everything in Standard, plus:</h4>
+          <ul class="space-y-3">
+            {premiumFeatures.slice(6).map((feature) => (
+              <li class="flex items-center text-text-secondary animate-on-scroll">
+                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                {feature}
+              </li>
+            ))}
+            <li class="flex items-center text-text-secondary animate-on-scroll">
+              <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              Priority Support
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center animate-on-scroll">
+      <p class="text-text-secondary mb-4">Not sure which plan is right for you?</p>
+      <a href="/contact" class="text-primary font-medium hover:underline">Contact us for a custom solution</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Add staggered animation delays to the pricing cards */
+  .pricing-card:nth-child(1) {
+    animation-delay: 100ms;
+  }
+  
+  .pricing-card:nth-child(2) {
+    animation-delay: 300ms;
+  }
+  
+  .pricing-card:nth-child(3) {
+    animation-delay: 500ms;
+  }
+  
+  /* Add staggered animation delays to the features */
+  .pricing-card li:nth-child(1) {
+    animation-delay: 200ms;
+  }
+  
+  .pricing-card li:nth-child(2) {
+    animation-delay: 300ms;
+  }
+  
+  .pricing-card li:nth-child(3) {
+    animation-delay: 400ms;
+  }
+  
+  .pricing-card li:nth-child(4) {
+    animation-delay: 500ms;
+  }
+  
+  .pricing-card li:nth-child(5) {
+    animation-delay: 600ms;
+  }
+  
+  /* Enhance card hover effects with theme-aware transitions */
+  .pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .pricing-card:hover {
+    transform: translateY(-5px);
+  }
+</style>

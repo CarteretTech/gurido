@@ -1,0 +1,348 @@
+---
+// Import necessary components and styles
+import "../styles/global.css";
+
+// Define interface for props
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+  ogType?: string;
+}
+
+// Destructure props with defaults
+const { 
+  title, 
+  description,
+  canonical = Astro.url.href,
+  image = "/images/craven-seo-social.jpg",
+  ogType = "website"
+} = Astro.props;
+
+// Define meta variables
+const siteName = "CravenSEO";
+const siteLocale = "en_US";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Core SEO meta tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="keywords" content="seo services, local seo, eastern nc, small business marketing, organic growth, search engine optimization" />
+    
+    <!-- Open Graph tags for social media -->
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content={siteLocale} />
+    
+    <!-- Twitter card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Theme color for browser UI -->
+    <meta name="theme-color" content="#4338ca" />
+    <meta name="color-scheme" content="light dark">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/fonts/montserrat-v25-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/montserrat-v25-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Alpine.js for interactivity -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Dark mode script - placed in head to avoid FOUC -->
+    <script is:inline>
+      // Check for saved theme preference or respect OS preference
+      function getThemePreference() {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        // Check if browser supports matchMedia and prefers dark mode
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      // Apply the theme preference
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        
+        // Update meta theme-color for browser UI
+        document.querySelector('meta[name="theme-color"]').setAttribute(
+          'content', 
+          theme === 'dark' ? '#141115' : '#ff3fbf'
+        );
+      }
+
+      // Set theme on initial load (execute immediately to prevent flash)
+      const theme = getThemePreference();
+      applyTheme(theme);
+      
+      // Store the preference if it was from OS
+      if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', theme);
+      }
+      
+      // Watch for OS preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches }) => {
+        // Only update if user hasn't manually set a preference
+        if (!localStorage.getItem('theme')) {
+          applyTheme(matches ? 'dark' : 'light');
+          localStorage.setItem('theme', matches ? 'dark' : 'light');
+        }
+      });
+    </script>
+    
+    <!-- slot for any additional head elements -->
+    <slot name="head" />
+  </head>
+  
+  <body class="font-sans bg-bg-primary text-text-primary transition-colors">
+    <!-- Progress bar -->
+    <div 
+      x-data="{ 
+        scrollProgress: 0,
+        init() {
+          window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            this.scrollProgress = (window.scrollY / docHeight) * 100;
+          });
+        }
+      }"
+      class="fixed top-0 left-0 right-0 z-50 h-1 bg-transparent"
+    >
+      <div 
+        class="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-200 ease-out"
+        :style="`width: ${scrollProgress}%`"
+      ></div>
+    </div>
+
+    <!-- Header with responsive menu -->
+    <header class="fixed w-full z-40 transition-all duration-300" 
+      x-data="{ 
+        isScrolled: false, 
+        isMenuOpen: false,
+        isDarkMode: localStorage.getItem('theme') === 'dark',
+        toggleTheme() {
+          this.isDarkMode = !this.isDarkMode;
+          const newTheme = this.isDarkMode ? 'dark' : 'light';
+          localStorage.setItem('theme', newTheme);
+          applyTheme(newTheme);
+        }
+      }" 
+      @scroll.window="isScrolled = window.pageYOffset > 20"
+    >
+      <div 
+        :class="isScrolled ? 'py-4 bg-bg-primary shadow-md' : 'py-6 bg-transparent'" 
+        class="container mx-auto px-6 transition-all duration-300 ease-in-out">
+        <!-- Header content here -->
+        <nav class="flex justify-between items-center">
+          <a href="/" class="text-2xl font-bold text-primary">CravenSEO</a>
+          
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex space-x-8">
+            <a href="#services" class="font-medium hover:text-primary transition-colors duration-300 animate-on-scroll">Services</a>
+            <a href="#how-it-works" class="font-medium hover:text-primary transition-colors duration-300 animate-on-scroll">Process</a>
+            <a href="#results" class="font-medium hover:text-primary transition-colors duration-300 animate-on-scroll">Results</a>
+            <a href="#pricing" class="font-medium hover:text-primary transition-colors duration-300 animate-on-scroll">Pricing</a>
+          </div>
+          
+          <!-- Theme toggle and Mobile Menu Toggle -->
+          <div class="flex items-center space-x-4">
+            <!-- Dark/Light Mode Toggle Button -->
+            <button 
+              @click="toggleTheme()" 
+              class="theme-toggle focus:outline-none text-text-primary hover:text-primary transition-colors p-2 rounded-full border border-transparent hover:border-border" 
+              :class="{'bg-bg-tertiary': isDarkMode}"
+              aria-label="Toggle dark mode"
+            >
+              <!-- Sun icon (shown in dark mode) -->
+              <svg 
+                x-show="isDarkMode"
+                xmlns="http://www.w3.org/2000/svg" 
+                class="h-5 w-5 text-mint-green" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <!-- Moon icon (shown in light mode) -->
+              <svg 
+                x-show="!isDarkMode"
+                xmlns="http://www.w3.org/2000/svg" 
+                class="h-5 w-5" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </button>
+          
+            <!-- Mobile Menu Toggle -->
+            <button 
+              @click="isMenuOpen = !isMenuOpen" 
+              class="md:hidden focus:outline-none"
+              aria-label="Toggle navigation menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+            
+            <!-- CTA Button -->
+            <a 
+              href="#contact" 
+              class="hidden md:block px-6 py-2 bg-primary text-white dark:text-dark-purple rounded-md shadow-sm hover:bg-primary-dark transition-colors duration-300 animate-on-scroll"
+            >
+              Get Started
+            </a>
+          </div>
+        </nav>
+        
+        <!-- Mobile Navigation -->
+        <div 
+          x-show="isMenuOpen"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 transform -translate-y-4"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform -translate-y-4"
+          class="md:hidden pt-4 pb-2"
+        >
+          <div class="flex flex-col space-y-4">
+            <a href="#services" @click="isMenuOpen = false" class="font-medium hover:text-primary transition-colors duration-300">Services</a>
+            <a href="#how-it-works" @click="isMenuOpen = false" class="font-medium hover:text-primary transition-colors duration-300">Process</a>
+            <a href="#results" @click="isMenuOpen = false" class="font-medium hover:text-primary transition-colors duration-300">Results</a>
+            <a href="#pricing" @click="isMenuOpen = false" class="font-medium hover:text-primary transition-colors duration-300">Pricing</a>
+            <a 
+              href="#contact" 
+              @click="isMenuOpen = false"
+              class="px-6 py-2 bg-primary text-white rounded-md shadow-sm hover:bg-primary-dark transition-colors duration-300 text-center"
+            >
+              Get Started
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-gray-900 dark:bg-dark-purple text-white pt-16 pb-8">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 animate-on-scroll">
+          <!-- Company Info -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-primary dark:text-vibrant-pink">CravenSEO</h3>
+            <p class="mb-6">Specializing in local SEO and organic growth for small and regional businesses in Eastern North Carolina.</p>
+            <div class="flex space-x-4">
+              <a href="#" aria-label="Facebook" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Twitter" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Services -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 text-primary dark:text-vibrant-pink">Services</h3>
+            <ul class="space-y-3">
+              <li><a href="#local-seo" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Local SEO</a></li>
+              <li><a href="#content-marketing" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Content Marketing</a></li>
+              <li><a href="#keyword-research" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Keyword Research</a></li>
+              <li><a href="#technical-seo" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Technical SEO</a></li>
+              <li><a href="#analytics" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Analytics & Reporting</a></li>
+            </ul>
+          </div>
+          
+          <!-- Company -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 text-primary dark:text-vibrant-pink">Company</h3>
+            <ul class="space-y-3">
+              <li><a href="#about" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">About Us</a></li>
+              <li><a href="#team" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Our Team</a></li>
+              <li><a href="#testimonials" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Testimonials</a></li>
+              <li><a href="#blog" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Blog</a></li>
+              <li><a href="#careers" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Careers</a></li>
+            </ul>
+          </div>
+          
+          <!-- Contact -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 text-primary dark:text-vibrant-pink">Contact</h3>
+            <address class="not-italic">
+              <p class="mb-3">123 Main Street</p>
+              <p class="mb-3">New Bern, NC 28560</p>
+              <p class="mb-3">
+                <a href="tel:+12525551234" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">
+                  (252) 555-1234
+                </a>
+              </p>
+              <p class="mb-3">
+                <a href="mailto:info@cravenseo.com" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">
+                  info@cravenseo.com
+                </a>
+              </p>
+            </address>
+          </div>
+        </div>
+        
+        <!-- Bottom footer -->
+        <div class="pt-8 mt-8 border-t border-gray-700 dark:border-gray-600 text-sm">
+          <div class="flex flex-col md:flex-row justify-between items-center animate-on-scroll">
+            <p>&copy; {new Date().getFullYear()} CravenSEO. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+              <a href="/privacy" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Privacy Policy</a>
+              <a href="/terms" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Terms of Service</a>
+              <a href="/sitemap" class="hover:text-primary dark:hover:text-vibrant-pink transition-colors duration-300">Sitemap</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Animation scripts -->
+    <script src="../js/animations.js"></script>
+    <slot name="after-footer" />
+  </body>
+</html>

@@ -1,0 +1,184 @@
+[
+  {
+    "term": "Algorithm",
+    "slug": "algorithm",
+    "definition": "A set of rules or procedures that search engines use to determine the ranking of web pages in search engine results pages (SERPs). Google's algorithms consider hundreds of factors, including content quality, user experience, and technical aspects of websites.",
+    "category": "Search Engines",
+    "importance": "high"
+  },
+  {
+    "term": "Backlink",
+    "slug": "backlink",
+    "definition": "A link from one website to another. Backlinks are considered votes of confidence and trust for the linked site, making them an important ranking factor in SEO. Quality backlinks from relevant, authoritative websites carry more weight than links from low-quality or irrelevant sites.",
+    "category": "Off-page SEO",
+    "importance": "high"
+  },
+  {
+    "term": "Core Web Vitals",
+    "slug": "core-web-vitals",
+    "definition": "A set of specific metrics that Google uses to measure user experience on websites, focusing on loading performance, interactivity, and visual stability. The three Core Web Vitals are Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS).",
+    "category": "Technical SEO",
+    "importance": "high"
+  },
+  {
+    "term": "Domain Authority",
+    "slug": "domain-authority",
+    "definition": "A metric developed by Moz that predicts how well a website will rank on search engine result pages. Domain Authority is calculated using multiple factors, including linking root domains and total number of links, and is scored on a scale from 1 to 100.",
+    "category": "SEO Metrics",
+    "importance": "medium"
+  },
+  {
+    "term": "E-A-T",
+    "slug": "e-a-t",
+    "definition": "Stands for Expertise, Authoritativeness, and Trustworthiness. E-A-T is a concept from Google's Search Quality Evaluator Guidelines that helps determine the quality of web content, particularly for YMYL (Your Money or Your Life) pages that could impact users' health, financial stability, or safety.",
+    "category": "Content Quality",
+    "importance": "high"
+  },
+  {
+    "term": "Featured Snippet",
+    "slug": "featured-snippet",
+    "definition": "A special search result that appears at the top of Google's search results, displaying an extracted answer to a user's query. Featured snippets typically include a summary of the answer, extracted from a webpage, along with the page's title, link, and sometimes an image.",
+    "category": "Search Results",
+    "importance": "medium"
+  },
+  {
+    "term": "Google Business Profile",
+    "slug": "google-business-profile",
+    "definition": "Formerly known as Google My Business, this free tool allows business owners to manage their online presence across Google Search and Maps. It includes the ability to add business information, photos, posts, and respond to reviews.",
+    "category": "Local SEO",
+    "importance": "high"
+  },
+  {
+    "term": "Hreflang",
+    "slug": "hreflang",
+    "definition": "An HTML attribute used to specify the language and geographical targeting of a webpage. Hreflang tags help search engines understand which version of a page should be shown to users based on their language and location.",
+    "category": "Technical SEO",
+    "importance": "low"
+  },
+  {
+    "term": "Indexing",
+    "slug": "indexing",
+    "definition": "The process by which search engines add webpages to their database. When a page is indexed, it means it has been visited by a search engine crawler, analyzed for content and meaning, and stored in the search engine's index to be retrieved when relevant to a search query.",
+    "category": "Search Engines",
+    "importance": "high"
+  },
+  {
+    "term": "JSON-LD",
+    "slug": "json-ld",
+    "definition": "JavaScript Object Notation for Linked Data, a method of implementing structured data markup on a webpage. JSON-LD helps search engines understand the content of a page more effectively and can enable rich results in search engine results pages.",
+    "category": "Technical SEO",
+    "importance": "medium"
+  },
+  {
+    "term": "Keyword",
+    "slug": "keyword",
+    "definition": "A word or phrase that users enter into search engines to find specific information. In SEO, keywords are researched and strategically incorporated into website content to improve visibility for relevant searches.",
+    "category": "On-page SEO",
+    "importance": "high"
+  },
+  {
+    "term": "Local SEO",
+    "slug": "local-seo",
+    "definition": "The practice of optimizing a business's online presence to attract more traffic from relevant local searches. Local SEO focuses on specific strategies to help businesses promote their products and services to local customers at the exact time they're looking for them.",
+    "category": "Local SEO",
+    "importance": "high"
+  },
+  {
+    "term": "Meta Description",
+    "slug": "meta-description",
+    "definition": "An HTML attribute that provides a brief summary of a webpage. While not a direct ranking factor, meta descriptions appear in search engine results pages and can influence click-through rates by providing users with a preview of the page's content.",
+    "category": "On-page SEO",
+    "importance": "medium"
+  },
+  {
+    "term": "NAP Consistency",
+    "slug": "nap-consistency",
+    "definition": "The consistency of a business's Name, Address, and Phone number across all online platforms and directories. NAP consistency is crucial for local SEO as it helps search engines verify business information and improve local rankings.",
+    "category": "Local SEO",
+    "importance": "high"
+  },
+  {
+    "term": "Organic Search",
+    "slug": "organic-search",
+    "definition": "Unpaid search results that are earned through effective SEO, as opposed to paid search advertisements. Organic search listings appear because they are relevant to someone's search terms as determined by the search engine's algorithm.",
+    "category": "Search Engines",
+    "importance": "high"
+  },
+  {
+    "term": "PageRank",
+    "slug": "pagerank",
+    "definition": "An algorithm used by Google to rank web pages in their search engine results. PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is, based on the assumption that more important websites are likely to receive more links from other sites.",
+    "category": "Search Engines",
+    "importance": "medium"
+  },
+  {
+    "term": "Query",
+    "slug": "query",
+    "definition": "The word, phrase, or question that a user enters into a search engine to find information. Understanding the types of queries users make (informational, navigational, transactional) is fundamental to effective keyword research and content strategy.",
+    "category": "Search Engines",
+    "importance": "medium"
+  },
+  {
+    "term": "Ranking Factor",
+    "slug": "ranking-factor",
+    "definition": "An element of search engine algorithms that determines the position of a webpage in search engine results pages. Google uses hundreds of ranking factors, including content quality, backlinks, mobile-friendliness, page speed, and user experience signals.",
+    "category": "Search Engines",
+    "importance": "high"
+  },
+  {
+    "term": "Schema Markup",
+    "slug": "schema-markup",
+    "definition": "A form of structured data added to a website's HTML that helps search engines understand the content and context of web pages. Schema markup can enhance search results with rich snippets, which may include star ratings, event information, product details, and more.",
+    "category": "Technical SEO",
+    "importance": "high"
+  },
+  {
+    "term": "Title Tag",
+    "slug": "title-tag",
+    "definition": "An HTML element that specifies the title of a web page. Title tags are displayed as clickable headlines in search engine results pages and are important for user experience, SEO, and social sharing.",
+    "category": "On-page SEO",
+    "importance": "high"
+  },
+  {
+    "term": "URL Structure",
+    "slug": "url-structure",
+    "definition": "The format and organization of URLs on a website. A well-structured URL is human-readable, contains relevant keywords, and reflects the site's organization, making it easier for users and search engines to understand the content of the page.",
+    "category": "Technical SEO",
+    "importance": "medium"
+  },
+  {
+    "term": "Voice Search",
+    "slug": "voice-search",
+    "definition": "A technology that allows users to search the internet by speaking into a device, rather than typing. Optimizing for voice search involves focusing on natural language queries, question keywords, and conversational content that addresses specific user needs.",
+    "category": "Search Trends",
+    "importance": "medium"
+  },
+  {
+    "term": "White Hat SEO",
+    "slug": "white-hat-seo",
+    "definition": "Ethical SEO practices that follow search engine guidelines and focus on providing value to users. White hat techniques include creating quality content, building a positive user experience, and earning legitimate backlinks, rather than attempting to manipulate search rankings through deceptive means.",
+    "category": "SEO Strategy",
+    "importance": "high"
+  },
+  {
+    "term": "XML Sitemap",
+    "slug": "xml-sitemap",
+    "definition": "A file that lists all the pages on a website that search engines should know about. XML sitemaps help search engine crawlers find and index content more efficiently, which is especially useful for new pages, large sites, or those with complex structures.",
+    "category": "Technical SEO",
+    "importance": "medium"
+  },
+  {
+    "term": "YMYL",
+    "slug": "ymyl",
+    "definition": "Stands for 'Your Money or Your Life.' YMYL pages are those that could potentially impact a person's future happiness, health, financial stability, or safety. Google holds these pages to higher quality standards because the consequences of low-quality YMYL pages could be serious for users.",
+    "category": "Content Quality",
+    "importance": "high"
+  },
+  {
+    "term": "Zero-Click Search",
+    "slug": "zero-click-search",
+    "definition": "A search engine query that is answered directly on the search results page without requiring the user to click through to a website. Featured snippets, knowledge panels, and other rich results contribute to the rise of zero-click searches.",
+    "category": "Search Trends",
+    "importance": "low"
+  }
+]

@@ -1,0 +1,395 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ServiceCard from "../../components/services/ServiceCard.astro";
+import services from "../../data/services.json";
+
+// Group services by category
+const serviceCategories = {
+  foundational: services.filter(service => service.category === "foundational"),
+  "on-page": services.filter(service => service.category === "on-page"),
+  technical: services.filter(service => service.category === "technical"),
+  "off-page": services.filter(service => service.category === "off-page"),
+  specialized: services.filter(service => service.category === "specialized")
+};
+
+// SEO metadata
+const title = "SEO Services for Eastern NC Businesses | CravenSEO";
+const description = "Comprehensive SEO services tailored for small businesses in Eastern North Carolina. Improve your local search visibility and grow your business.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-primary/10 to-secondary/5">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          SEO Services That <span class="text-gradient">Drive Results</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-8">
+          Tailored search engine optimization strategies to help Eastern NC businesses dominate their local markets and grow online.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a 
+            href="#services-list" 
+            class="btn btn-primary btn-lg"
+          >
+            Explore Our Services
+          </a>
+          <a 
+            href="/contact" 
+            class="btn btn-secondary btn-lg"
+          >
+            Get a Free Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Animated Background Elements -->
+    <div class="absolute top-20 left-10 w-20 h-20 rounded-full bg-primary/10 animate-pulse" style="animation-duration: 3s;"></div>
+    <div class="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-secondary/10 animate-pulse" style="animation-duration: 4s;"></div>
+    <div class="absolute top-40 right-[20%] w-16 h-16 rounded-full bg-accent/10 animate-pulse" style="animation-duration: 5s;"></div>
+  </section>
+  
+  <!-- Services Introduction -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Comprehensive SEO Solutions
+        </h2>
+        <p class="text-lg text-gray-700">
+          Our data-driven approach combines technical expertise, content strategy, and local market knowledge to improve your search rankings and grow your business in Eastern North Carolina.
+        </p>
+      </div>
+      
+      <!-- Service Categories -->
+      <div id="services-list" class="mb-16">
+        {Object.entries(serviceCategories).map(([category, categoryServices], categoryIndex) => (
+          categoryServices.length > 0 && (
+            <div class="mb-16 last:mb-0 animate-on-scroll">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3 capitalize">
+                {category.replace("-", " ")} SEO Services
+              </h3>
+              <div class="h-1 w-20 bg-primary mb-8"></div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {categoryServices.map((service, index) => (
+                  <ServiceCard service={service} index={index} />
+                ))}
+              </div>
+            </div>
+          )
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our SEO Services -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Why Choose CravenSEO?
+        </h2>
+        <p class="text-lg text-gray-700">
+          We combine technical expertise with deep local knowledge to deliver SEO solutions tailored to Eastern North Carolina businesses.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Local Market Expertise</h3>
+          <p class="text-gray-700">
+            Deep understanding of Eastern NC communities, consumer behavior, and competition allows us to create hyper-local strategies.
+          </p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Measurable Results</h3>
+          <p class="text-gray-700">
+            Transparent reporting shows exactly how our SEO efforts are improving your visibility, traffic, and business growth.
+          </p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">US-Based Infrastructure</h3>
+          <p class="text-gray-700">
+            100% American-based technical infrastructure with Astro + Netlify platform for superior speed, security, and SEO performance.
+          </p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Hybrid Content Creation</h3>
+          <p class="text-gray-700">
+            AI-assisted first drafts refined by human experts for accuracy, local relevance, and a consistent brand voice.
+          </p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Guerrilla Marketing Integration</h3>
+          <p class="text-gray-700">
+            Digital SEO combined with attention-grabbing local tactics creates a comprehensive marketing approach for maximum visibility.
+          </p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Ethical Practices</h3>
+          <p class="text-gray-700">
+            White-hat SEO techniques that build sustainable growth without risking penalties from search engines or damaging your reputation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="bg-primary py-20 text-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Ready to Dominate Your Local Market?
+        </h2>
+        <p class="text-xl mb-8 text-white/90">
+          Schedule a free consultation to discuss how our SEO services can help your Eastern NC business grow.
+        </p>
+        <a 
+          href="/contact" 
+          class="inline-block py-3 px-8 bg-white text-primary font-bold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-300"
+        >
+          Get Started Today
+        </a>
+        <p class="mt-6 text-sm text-white/70">
+          No contracts or commitments. Just a conversation about your goals.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-lg text-gray-700 mb-12 text-center">
+          Have questions about our SEO services? Find quick answers below.
+        </p>
+        
+        <div class="space-y-6">
+          <div 
+            x-data="{ open: false }" 
+            class="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+          >
+            <button 
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            >
+              <span class="font-medium text-gray-900">How long until I see results from SEO?</span>
+              <svg 
+                :class="{'rotate-180': open}" 
+                class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform -translate-y-2"
+              x-transition:enter-end="opacity-100 transform translate-y-0"
+              x-transition:leave="transition ease-in duration-300"
+              x-transition:leave-start="opacity-100 transform translate-y-0"
+              x-transition:leave-end="opacity-0 transform -translate-y-2"
+              class="px-6 pb-4 text-gray-700"
+            >
+              <p>While our guerrilla marketing tactics can generate immediate buzz, SEO typically shows meaningful results within 3-6 months. The timeline depends on your current website condition, competition level, and the specific strategies implemented. We provide regular updates so you can track progress from the beginning.</p>
+            </div>
+          </div>
+          
+          <div 
+            x-data="{ open: false }" 
+            class="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+          >
+            <button 
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            >
+              <span class="font-medium text-gray-900">What makes CravenSEO different from other agencies?</span>
+              <svg 
+                :class="{'rotate-180': open}" 
+                class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform -translate-y-2"
+              x-transition:enter-end="opacity-100 transform translate-y-0"
+              x-transition:leave="transition ease-in duration-300"
+              x-transition:leave-start="opacity-100 transform translate-y-0"
+              x-transition:leave-end="opacity-0 transform -translate-y-2"
+              class="px-6 pb-4 text-gray-700"
+            >
+              <p>Our hybrid AI+human approach, US-based infrastructure, guerrilla marketing integration, and deep local focus set us apart from cookie-cutter SEO services. We specialize exclusively in Eastern NC businesses and have intimate knowledge of the local market dynamics and consumer behavior patterns specific to this region.</p>
+            </div>
+          </div>
+          
+          <div 
+            x-data="{ open: false }" 
+            class="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+          >
+            <button 
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            >
+              <span class="font-medium text-gray-900">Do you offer guarantees for your SEO services?</span>
+              <svg 
+                :class="{'rotate-180': open}" 
+                class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform -translate-y-2"
+              x-transition:enter-end="opacity-100 transform translate-y-0"
+              x-transition:leave="transition ease-in duration-300"
+              x-transition:leave-start="opacity-100 transform translate-y-0"
+              x-transition:leave-end="opacity-0 transform -translate-y-2"
+              class="px-6 pb-4 text-gray-700"
+            >
+              <p>We guarantee transparent reporting, consistent effort, and adherence to best practices. No ethical SEO company can guarantee specific rankings because search algorithms are constantly changing and outside anyone's control. However, we're confident in our approach and have a track record of helping businesses improve their online visibility and traffic.</p>
+            </div>
+          </div>
+          
+          <div 
+            x-data="{ open: false }" 
+            class="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+          >
+            <button 
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            >
+              <span class="font-medium text-gray-900">How do you measure SEO success?</span>
+              <svg 
+                :class="{'rotate-180': open}" 
+                class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform -translate-y-2"
+              x-transition:enter-end="opacity-100 transform translate-y-0"
+              x-transition:leave="transition ease-in duration-300"
+              x-transition:leave-start="opacity-100 transform translate-y-0"
+              x-transition:leave-end="opacity-0 transform -translate-y-2"
+              class="px-6 pb-4 text-gray-700"
+            >
+              <p>We track both digital metrics (keyword rankings, organic traffic, conversion rates) and physical engagement (QR code scans, event attendance, in-store mentions). Our comprehensive reporting provides insights on performance across search engines, maps, local directories, and your website, always tying back to actual business results like leads and revenue.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Add structured data for FAQ -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long until I see results from SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "While our guerrilla marketing tactics can generate immediate buzz, SEO typically shows meaningful results within 3-6 months. The timeline depends on your current website condition, competition level, and the specific strategies implemented. We provide regular updates so you can track progress from the beginning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes CravenSEO different from other agencies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our hybrid AI+human approach, US-based infrastructure, guerrilla marketing integration, and deep local focus set us apart from cookie-cutter SEO services. We specialize exclusively in Eastern NC businesses and have intimate knowledge of the local market dynamics and consumer behavior patterns specific to this region."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer guarantees for your SEO services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We guarantee transparent reporting, consistent effort, and adherence to best practices. No ethical SEO company can guarantee specific rankings because search algorithms are constantly changing and outside anyone's control. However, we're confident in our approach and have a track record of helping businesses improve their online visibility and traffic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you measure SEO success?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We track both digital metrics (keyword rankings, organic traffic, conversion rates) and physical engagement (QR code scans, event attendance, in-store mentions). Our comprehensive reporting provides insights on performance across search engines, maps, local directories, and your website, always tying back to actual business results like leads and revenue."
+      }
+    }
+  ]
+})} />
