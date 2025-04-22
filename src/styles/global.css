@@ -22,21 +22,32 @@
 
 /* CSS Variables for consistent theming */
 :root {
-  /* Brand Colors - Updated with new color scheme */
-  --color-dark-background: #0D0D0D;  /* almost black */
-  --color-light-background: #E4E4E4;  /* light gray background */
-  --color-neon-green: #00FF85;       /* neon green accent */
-  --color-electric-blue: #1E90FF;    /* electric blue accent */
-  --color-vivid-pink: #FF0099;       /* vivid pink for hover effects */
-  --color-pure-white: #FFFFFF;       /* pure white */
-  --color-almost-black: #111111;     /* almost black for text */
+  /* Brand Colors - Enhanced with vibrant neon palette */
+  --color-dark-background: #0D0D0D;     /* almost black */
+  --color-light-background: #E4E4E4;    /* light gray background */
+  --color-neon-green: #39FF14;          /* vibrant neon green - slightly adjusted for more pop */
+  --color-electric-blue: #00FFFF;       /* electric cyan/blue - more neon feel */
+  --color-vivid-pink: #FF10F0;          /* brighter magenta pink */
+  --color-neon-yellow: #FFFF00;         /* neon yellow for tech emphasis */
+  --color-neon-orange: #FF6600;         /* neon orange for calls to action */
+  --color-neon-purple: #BD00FF;         /* neon purple for creative elements */
+  --color-pure-white: #FFFFFF;          /* pure white */
+  --color-almost-black: #111111;        /* almost black for text */
   
   /* Derived accents with proper contrast for light mode */
   --color-primary: var(--color-neon-green);
-  --color-primary-dark: #00cc6b;     /* Slightly darker neon green for hover states */
+  --color-primary-dark: #00cc6b;        /* Slightly darker neon green for hover states */
   --color-secondary: var(--color-electric-blue);
-  --color-secondary-dark: #0066cc;   /* Darker blue for hover states */
+  --color-secondary-dark: #00c7c7;      /* Darker blue for hover states */
   --color-accent: var(--color-vivid-pink);
+  
+  /* Neon glow effects for animations */
+  --glow-green: 0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5);
+  --glow-blue: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
+  --glow-pink: 0 0 10px rgba(255, 16, 240, 0.7), 0 0 20px rgba(255, 16, 240, 0.5);
+  --glow-yellow: 0 0 10px rgba(255, 255, 0, 0.7), 0 0 20px rgba(255, 255, 0, 0.5);
+  --glow-orange: 0 0 10px rgba(255, 102, 0, 0.7), 0 0 20px rgba(255, 102, 0, 0.5);
+  --glow-purple: 0 0 10px rgba(189, 0, 255, 0.7), 0 0 20px rgba(189, 0, 255, 0.5);
   
   /* Base colors - Light Mode (default) */
   --color-gray-900: var(--color-almost-black);    /* Text - almost black */
@@ -109,11 +120,11 @@
   --color-gray-100: #2d3748;    /* Background (darker shade) */
   --color-gray-50: #1a202c;     /* Secondary background (darker shade) */
   
-  /* Inverted color scheme for dark mode */
+  /* Enhanced neon colors pop more in dark mode */
   --color-primary: var(--color-neon-green);       /* Keep neon green as primary */
   --color-primary-dark: #00cc6b;                  /* Slightly darker neon green */
   --color-secondary: var(--color-electric-blue);  /* Keep electric blue as secondary */
-  --color-secondary-dark: #0066cc;                /* Darker blue */
+  --color-secondary-dark: #00c7c7;                /* Darker blue */
   --color-accent: var(--color-vivid-pink);        /* Keep vivid pink as accent */
   
   /* Theme colors for dark mode */
@@ -126,6 +137,14 @@
   --color-border: #4a5568;                            /* Border color - medium dark */
   --color-card-bg: #161616;                           /* Card background - slightly lighter than main bg */
   --color-card-shadow: rgba(0, 0, 0, 0.5);            /* Deeper shadows for dark mode */
+  
+  /* Enhanced glow effects for dark mode */
+  --glow-green: 0 0 15px rgba(57, 255, 20, 0.8), 0 0 30px rgba(57, 255, 20, 0.6);
+  --glow-blue: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
+  --glow-pink: 0 0 15px rgba(255, 16, 240, 0.8), 0 0 30px rgba(255, 16, 240, 0.6);
+  --glow-yellow: 0 0 15px rgba(255, 255, 0, 0.8), 0 0 30px rgba(255, 255, 0, 0.6);
+  --glow-orange: 0 0 15px rgba(255, 102, 0, 0.8), 0 0 30px rgba(255, 102, 0, 0.6);
+  --glow-purple: 0 0 15px rgba(189, 0, 255, 0.8), 0 0 30px rgba(189, 0, 255, 0.6);
   
   /* Specially enhanced shadows for dark mode */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);

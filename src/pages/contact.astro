@@ -1,0 +1,324 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// SEO metadata
+const title = "Contact Us | CravenSEO | Eastern NC SEO Services";
+const description = "Get in touch with CravenSEO for expert local SEO services in Eastern North Carolina. Schedule a free consultation for your business.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+  ogType="website"
+>
+  <section class="py-20 pt-32 bg-bg-primary text-text-primary">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 animate-on-scroll" data-aos="fade-up">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+          <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+            Ready to dominate local search? Schedule a free consultation to discuss how our SEO services can help your Eastern NC business grow.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Contact Form -->
+          <div class="bg-card-bg rounded-xl shadow-md p-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6">Send Us a Message</h2>
+            <form id="contactForm" class="space-y-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-text-secondary mb-1">Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg-primary text-text-primary"
+                  placeholder="Your name"
+                />
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium text-text-secondary mb-1">Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg-primary text-text-primary"
+                  placeholder="your@email.com"
+                />
+              </div>
+              
+              <div>
+                <label for="phone" class="block text-sm font-medium text-text-secondary mb-1">Phone (Optional)</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg-primary text-text-primary"
+                  placeholder="(252) 555-1234"
+                />
+              </div>
+              
+              <div>
+                <label for="business" class="block text-sm font-medium text-text-secondary mb-1">Business Name</label>
+                <input 
+                  type="text" 
+                  id="business" 
+                  name="business" 
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg-primary text-text-primary"
+                  placeholder="Your business name"
+                />
+              </div>
+              
+              <div>
+                <label for="service" class="block text-sm font-medium text-text-secondary mb-1">Service Interest</label>
+                <select 
+                  id="service" 
+                  name="service"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg-primary text-text-primary"
+                >
+                  <option value="">Select a service...</option>
+                  <option value="local-seo">Local SEO</option>
+                  <option value="seo-audit">SEO Audit</option>
+                  <option value="technical-seo">Technical SEO</option>
+                  <option value="content-optimization">Content Optimization</option>
+                  <option value="keyword-research">Keyword Research</option>
+                  <option value="other">Other (Please specify)</option>
+                </select>
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-text-secondary mb-1">Message</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="5" 
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-bg-primary text-text-primary"
+                  placeholder="How can we help you?"
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit" 
+                class="btn btn-primary w-full py-3 flex items-center justify-center"
+              >
+                <span>Send Message</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </form>
+          </div>
+          
+          <!-- Contact Information -->
+          <div class="space-y-8 animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
+            <div>
+              <h2 class="text-2xl font-bold mb-4">Contact Information</h2>
+              <p class="text-text-secondary mb-8">
+                Reach out to us directly or use the form to schedule a free consultation.
+              </p>
+              
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div class="mt-1 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="font-bold">Address</h3>
+                    <p class="text-text-secondary">123 Main Street, New Bern, NC 28560</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="mt-1 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="font-bold">Phone</h3>
+                    <p class="text-text-secondary">(252) 555-1234</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="mt-1 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="font-bold">Email</h3>
+                    <p class="text-text-secondary">info@cravenseo.com</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="mt-1 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="font-bold">Business Hours</h3>
+                    <p class="text-text-secondary">Monday – Friday: 9:00 AM – 5:00 PM</p>
+                    <p class="text-text-secondary">Saturday & Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Map -->
+            <div class="mt-12 rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 animate-on-scroll" data-aos="fade-up">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52858.87305517007!2d-77.0949650966797!3d35.10808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89a8d273b2dfc4bd%3A0xd2c2ad35c38e9dcb!2sNew%20Bern%2C%20NC!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
+                width="100%"
+                height="300"
+                style="border:0;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="CravenSEO Office Location"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-16 bg-bg-secondary text-text-primary">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 animate-on-scroll" data-aos="fade-up">
+          <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p class="text-text-secondary">
+            Have questions about working with us? Find answers to common questions below.
+          </p>
+        </div>
+        
+        <div class="space-y-4 animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+          <!-- FAQ Items using Alpine.js -->
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">How long does it take to see results from SEO?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                SEO is a long-term strategy. While some improvements may be visible within the first few weeks, significant results typically take 3-6 months. Local SEO for Eastern NC businesses often shows results faster than national campaigns. We provide monthly reports to track your progress.
+              </p>
+            </div>
+          </div>
+          
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">Do you offer guaranteed rankings?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                No reputable SEO company can guarantee specific rankings, as search algorithms are constantly evolving and influenced by many factors outside our control. However, we do guarantee to follow SEO best practices and implement proven strategies that have helped our Eastern NC clients achieve significant ranking improvements.
+              </p>
+            </div>
+          </div>
+          
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">Do I need to sign a long-term contract?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                We offer month-to-month agreements after an initial 3-month commitment. SEO is a long-term strategy, and it typically takes at least 3 months to start seeing meaningful results. However, we don't believe in locking clients into lengthy contracts.
+              </p>
+            </div>
+          </div>
+          
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">What makes your SEO services different for Eastern NC?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                We specialize exclusively in Eastern North Carolina markets, giving us unique insights into local search trends, consumer behavior, and competitive landscapes in cities like New Bern, Greenville, Jacksonville, and Wilmington. Our team lives and works in Eastern NC, and we understand the specific challenges and opportunities that businesses face in this region.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Form submission handling
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    
+    form?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // In a real implementation, you would send the form data to your server
+      // For now, we'll just show a success message
+      alert('Thank you for your message! We will get back to you shortly.');
+      form.reset();
+    });
+  });
+</script>

@@ -1,0 +1,207 @@
+---
+import Layout from "../layouts/Layout.astro";
+import services from "../data/services.json";
+import locations from "../data/locations.json";
+
+// SEO metadata
+const title = "Sitemap | CravenSEO | Eastern NC SEO Services";
+const description = "Navigate our website with ease. View all pages and resources offered by CravenSEO for Eastern North Carolina businesses.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+  ogType="website"
+>
+  <section class="py-20 pt-32 bg-bg-primary text-text-primary">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12 animate-on-scroll" data-aos="fade-up">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Sitemap</h1>
+          <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+            Explore all pages and resources on the CravenSEO website
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+          <!-- Main Pages -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-primary">Main Pages</h2>
+            <ul class="space-y-3">
+              <li>
+                <a href="/" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/services" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="/blog" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="/contact" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Contact
+                </a>
+              </li>
+            </ul>
+            
+            <h3 class="text-xl font-bold mt-8 mb-4 text-secondary">Legal Pages</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="/privacy" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/terms" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="/sitemap.xml" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  XML Sitemap
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Services -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-primary">SEO Services</h2>
+            <ul class="space-y-3">
+              {services.map((service) => (
+                <li>
+                  <a href={`/services/${service.id}`} class="hover:text-primary transition-colors flex items-center group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    {service.name}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a href="/services/content-marketing" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Content Marketing
+                </a>
+              </li>
+              <li>
+                <a href="/services/analytics" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Analytics & Reporting
+                </a>
+              </li>
+              <li>
+                <a href="/services/competitor-analysis" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Competitor Analysis
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Locations & Blog -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-primary">Locations</h2>
+            <ul class="space-y-3">
+              {locations.map((location) => (
+                <li>
+                  <a href={`/locations/${location.slug}`} class="hover:text-primary transition-colors flex items-center group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    {location.name}, NC
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a href="/locations/eastern-nc" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Eastern NC
+                </a>
+              </li>
+              <li>
+                <a href="/locations/coastal-nc" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Coastal NC
+                </a>
+              </li>
+            </ul>
+            
+            <h3 class="text-xl font-bold mt-8 mb-4 text-secondary">Recent Blog Posts</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="/blog/seo-audit-benefits-new-bern-small-businesses" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  7 Critical Benefits of an SEO Audit
+                </a>
+              </li>
+              <li>
+                <a href="/blog/hidden-technical-issues-hurting-eastern-nc-website-rankings" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  5 Hidden Technical Issues
+                </a>
+              </li>
+              <li>
+                <a href="/blog/google-business-profile-optimization-local-seo-greenville-nc" class="hover:text-primary transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Google Business Profile Optimization
+                </a>
+              </li>
+              <li>
+                <a href="/blog" class="font-medium text-accent hover:text-accent-dark transition-colors flex items-center group">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  View All Blog Posts
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -15,13 +15,13 @@ const locations = [...new Set(sortedPosts.map(post => post.location))];
 // SEO metadata
 const title = 'SEO Blog | Expert Tips for Eastern NC Businesses | CravenSEO';
 const description = 'Discover actionable SEO tips, local marketing strategies, and digital growth tactics specifically for Eastern North Carolina businesses.';
-const canonicalURL = new URL('/blog', Astro.site);
+const canonical = new URL('/blog', Astro.site || 'https://cravenseo.com').toString();
 ---
 
 <Layout 
   title={title}
   description={description}
-  canonicalUrl={canonicalURL}
+  canonical={canonical}
   ogType="website"
   ogTitle="Eastern NC SEO Blog - Local Digital Marketing Tips | CravenSEO"
   ogDescription="Expert SEO advice, local marketing strategies, and digital growth tactics specifically for businesses in Eastern North Carolina."

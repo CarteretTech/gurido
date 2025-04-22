@@ -1,0 +1,550 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import locations from "../../data/locations.json";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  // Generate paths for all locations in our data file
+  const locationPaths = locations.map(location => ({
+    params: { slug: location.slug },
+    props: { location }
+  }));
+  
+  // Add special regional pages
+  const regionalPaths = [
+    {
+      params: { slug: 'eastern-nc' },
+      props: { 
+        location: {
+          name: 'Eastern North Carolina',
+          slug: 'eastern-nc',
+          description: 'Comprehensive SEO services for businesses across the entire Eastern North Carolina region.',
+          population: '1.5 million+',
+          keyIndustries: ['Tourism', 'Agriculture', 'Manufacturing', 'Healthcare', 'Military', 'Education'],
+          image: '/images/locations/eastern-nc.jpg',
+          isRegional: true
+        }
+      }
+    },
+    {
+      params: { slug: 'coastal-nc' },
+      props: { 
+        location: {
+          name: 'Coastal North Carolina',
+          slug: 'coastal-nc',
+          description: 'Specialized SEO services for coastal businesses that understand the unique seasonal economy and tourism-driven market along North Carolina\'s beautiful coast.',
+          population: '750,000+',
+          keyIndustries: ['Tourism', 'Hospitality', 'Real Estate', 'Fishing', 'Marine Services', 'Retail'],
+          image: '/images/locations/coastal-nc.jpg',
+          isRegional: true
+        }
+      }
+    }
+  ];
+  
+  return [...locationPaths, ...regionalPaths];
+}
+
+// Get location data from props
+const { location } = Astro.props;
+
+// SEO metadata
+const title = `SEO Services in ${location.name}, NC | CravenSEO`;
+const description = `Dominate local search results in ${location.name} with CravenSEO's specialized search engine optimization services for businesses in ${location.isRegional ? location.name : `${location.name}, NC`}.`;
+---
+
+<Layout 
+  title={title}
+  description={description}
+  ogType="website"
+>
+  <!-- Hero Section -->
+  <section class="py-20 pt-32 bg-bg-primary text-text-primary relative">
+    <!-- Location Background Image with Overlay -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-b from-primary/30 to-bg-primary"></div>
+      <img 
+        src={location.image || '/images/locations/default-location.jpg'} 
+        alt={`${location.name}, North Carolina`} 
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 animate-on-scroll" data-aos="fade-up">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            SEO Services in <span class="text-gradient">{location.name}</span>
+          </h1>
+          <p class="text-lg text-text-secondary max-w-3xl mx-auto">
+            Dominate local search results with SEO services specifically designed for {location.isRegional ? location.name : `${location.name}, NC`} businesses.
+          </p>
+        </div>
+        
+        <div class="bg-card-bg rounded-xl shadow-md p-8 backdrop-blur-sm bg-opacity-90 animate-on-scroll" data-aos="fade-up">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h2 class="text-xl font-bold mb-4 text-primary">About {location.name}</h2>
+              <p class="text-text-secondary mb-6">
+                {location.description || `${location.name} is a vibrant community in Eastern North Carolina with a unique local economy and customer base. Our SEO services are tailored to help businesses in ${location.name} connect with local customers through strategic search engine optimization.`}
+              </p>
+              
+              <div class="space-y-4">
+                {location.population && (
+                  <div class="flex items-center">
+                    <div class="text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <span class="ml-2">Population: {location.population}</span>
+                  </div>
+                )}
+                
+                <div class="flex items-start">
+                  <div class="mt-1 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                  </div>
+                  <div class="ml-2">
+                    <span class="font-medium">Key Industries:</span>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                      {(location.keyIndustries || ['Retail', 'Healthcare', 'Hospitality', 'Professional Services']).map((industry) => (
+                        <span class="bg-bg-tertiary py-1 px-3 rounded-full text-sm">{industry}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="space-y-6">
+              <h2 class="text-xl font-bold mb-4 text-primary">Why {location.name} Businesses Need SEO</h2>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="mt-1 text-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <h3 class="font-bold">Targeted Local Traffic</h3>
+                    <p class="text-text-secondary text-sm">Attract customers specifically from {location.name} and surrounding areas.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="mt-1 text-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <h3 class="font-bold">Competitive Edge</h3>
+                    <p class="text-text-secondary text-sm">Stand out from other {location.name} businesses in Google search results.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="mt-1 text-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <h3 class="font-bold">Increased Visibility</h3>
+                    <p class="text-text-secondary text-sm">Be found when potential customers search for services in {location.name}.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pt-4">
+                <a 
+                  href="/contact" 
+                  class="btn btn-primary mt-2 w-full text-center py-3"
+                >
+                  Get a Free Consultation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="py-16 bg-bg-secondary text-text-primary">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12 animate-on-scroll" data-aos="fade-up">
+          <h2 class="text-3xl font-bold mb-4">
+            SEO Services For {location.name} Businesses
+          </h2>
+          <p class="text-lg text-text-secondary max-w-3xl mx-auto">
+            Our comprehensive SEO solutions are tailored to the unique needs of {location.isRegional ? location.name : `${location.name}, NC`} businesses.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+          <div class="bg-card-bg rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Local SEO</h3>
+            <p class="text-text-secondary mb-4">
+              Dominate local search results in {location.name} with optimized Google Business Profile, local citations, and localized content.
+            </p>
+            <a href="/services/local-seo" class="text-accent hover:text-accent-dark transition-colors font-medium flex items-center">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          
+          <div class="bg-card-bg rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Keyword Research</h3>
+            <p class="text-text-secondary mb-4">
+              Targeted keyword research focused on {location.name} search patterns, local terminology, and competitive gaps.
+            </p>
+            <a href="/services/keyword-research" class="text-accent hover:text-accent-dark transition-colors font-medium flex items-center">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          
+          <div class="bg-card-bg rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">SEO Audit</h3>
+            <p class="text-text-secondary mb-4">
+              Comprehensive analysis of your website's SEO health with customized recommendations for the {location.name} market.
+            </p>
+            <a href="/services/seo-audit" class="text-accent hover:text-accent-dark transition-colors font-medium flex items-center">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          
+          <div class="bg-card-bg rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Content Optimization</h3>
+            <p class="text-text-secondary mb-4">
+              Strategic content creation and optimization that speaks directly to {location.name} customers and their needs.
+            </p>
+            <a href="/services/content-optimization" class="text-accent hover:text-accent-dark transition-colors font-medium flex items-center">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          
+          <div class="bg-card-bg rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Technical SEO</h3>
+            <p class="text-text-secondary mb-4">
+              Resolve technical issues that prevent your website from ranking well in {location.name} search results.
+            </p>
+            <a href="/services/technical-seo" class="text-accent hover:text-accent-dark transition-colors font-medium flex items-center">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          
+          <div class="bg-card-bg rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Performance Analytics</h3>
+            <p class="text-text-secondary mb-4">
+              Track your SEO performance with detailed reports showing your growth in {location.name} search rankings.
+            </p>
+            <a href="/services/analytics" class="text-accent hover:text-accent-dark transition-colors font-medium flex items-center">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="mt-12 text-center animate-on-scroll" data-aos="fade-up">
+          <a href="/contact" class="btn btn-primary inline-block py-3 px-8">
+            Schedule Your Free Consultation
+          </a>
+          <p class="mt-4 text-sm text-text-secondary">
+            No contracts or commitments – Learn how we can help your {location.name} business grow
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Case Studies Section -->
+  <section class="py-16 bg-bg-primary text-text-primary">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12 animate-on-scroll" data-aos="fade-up">
+          <h2 class="text-3xl font-bold mb-4">
+            Results for {location.name} Businesses
+          </h2>
+          <p class="text-lg text-text-secondary max-w-3xl mx-auto">
+            See how we've helped other businesses in {location.isRegional ? location.name : `${location.name}, NC`} improve their online visibility and attract more customers.
+          </p>
+        </div>
+        
+        <div class="bg-card-bg rounded-xl shadow-md p-8 animate-on-scroll" data-aos="fade-up">
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="w-full md:w-2/5">
+              <img 
+                src="/images/case-studies/case-study-1.jpg" 
+                alt={`${location.name} Business Case Study`} 
+                class="rounded-lg w-full h-auto object-cover shadow-md"
+              />
+            </div>
+            
+            <div class="w-full md:w-3/5">
+              <span class="text-accent font-medium">{`${location.name} Business Success`}</span>
+              <h3 class="text-2xl font-bold mt-2 mb-4">
+                How We Helped a Local Business Increase Organic Traffic by 73%
+              </h3>
+              
+              <p class="text-text-secondary mb-6">
+                A local {location.name} business was struggling to attract customers through their website. After implementing our comprehensive SEO strategy, they saw a significant increase in organic traffic and leads.
+              </p>
+              
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-bg-secondary p-4 rounded-lg text-center">
+                  <div class="text-3xl font-bold text-primary">73%</div>
+                  <div class="text-sm text-text-secondary">Increase in Organic Traffic</div>
+                </div>
+                <div class="bg-bg-secondary p-4 rounded-lg text-center">
+                  <div class="text-3xl font-bold text-primary">4.8×</div>
+                  <div class="text-sm text-text-secondary">Return on Investment</div>
+                </div>
+              </div>
+              
+              <a href="/contact" class="btn btn-secondary">
+                Get Similar Results
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-16 bg-bg-secondary text-text-primary">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 animate-on-scroll" data-aos="fade-up">
+          <h2 class="text-3xl font-bold mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-text-secondary">
+            Common questions about SEO services in {location.name}
+          </p>
+        </div>
+        
+        <div class="space-y-4 animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
+          <!-- FAQ Items using Alpine.js -->
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">How long does it take to see results from SEO in {location.name}?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                SEO is a long-term strategy. While some improvements may be visible within the first few weeks, significant results typically take 3-6 months. Local SEO for {location.name} businesses often shows results faster than national campaigns since the competition may be less intense. We provide monthly reports to track your progress.
+              </p>
+            </div>
+          </div>
+          
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">What makes your SEO services different for {location.name} businesses?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                We understand the unique challenges and opportunities for businesses in {location.name}. Our team lives and works in Eastern NC, giving us local market knowledge that national SEO companies simply don't have. We customize our strategies based on local search trends, competition, and consumer behavior specific to {location.name} and the surrounding area.
+              </p>
+            </div>
+          </div>
+          
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">Do I need different SEO strategies for different Eastern NC locations?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                Yes, each Eastern NC location has its own unique market characteristics. While there are similarities across the region, successful local SEO requires customization for each target location. We can help businesses target multiple locations across Eastern NC with tailored strategies for each area.
+              </p>
+            </div>
+          </div>
+          
+          <div x-data="{ open: false }" class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              @click="open = !open"
+              class="flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+              :class="{'bg-bg-tertiary': open}"
+            >
+              <h3 class="font-medium">How much does SEO cost for a {location.name} business?</h3>
+              <svg
+                class="h-5 w-5 text-primary transition-transform"
+                :class="{'transform rotate-180': open}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div x-show="open" x-collapse class="px-6 py-4 bg-card-bg">
+              <p class="text-text-secondary">
+                Our SEO services start at $750/month for local businesses in {location.name}. The exact investment depends on your current website situation, competition level, and goals. We offer flexible packages designed to fit small business budgets while delivering maximum ROI. Contact us for a free consultation and custom quote.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="py-16 bg-bg-primary text-text-primary relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-4xl mx-auto text-center animate-on-scroll" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Ready to Dominate {location.name} Search Results?
+        </h2>
+        <p class="text-lg text-text-secondary mb-8 max-w-2xl mx-auto">
+          Get started with a free consultation and competitive analysis to see how we can help your {location.name} business grow through effective SEO.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="/contact" class="btn btn-primary py-3 px-8">
+            Get a Free Consultation
+          </a>
+          <a href="/services" class="btn btn-secondary py-3 px-8">
+            Explore All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Add structured data for LocalBusiness -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CravenSEO",
+  "description": `SEO services for businesses in ${location.name}, North Carolina.`,
+  "url": `https://cravenseo.com/locations/${location.slug}`,
+  "logo": "https://cravenseo.com/images/logo.png",
+  "image": location.image || "https://cravenseo.com/images/office.jpg",
+  "telephone": "+12525551234",
+  "email": "info@cravenseo.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main Street",
+    "addressLocality": "New Bern",
+    "addressRegion": "NC",
+    "postalCode": "28560",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "35.1085",
+    "longitude": "-77.0441"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "areaServed": {
+    "@type": "City",
+    "name": location.name + ", North Carolina"
+  }
+})} />

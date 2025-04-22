@@ -1,312 +1,50 @@
 [
   {
-    "id": "new-bern",
     "name": "New Bern",
-    "state": "NC",
-    "county": "Craven",
-    "slug": "new-bern-nc",
-    "description": "New Bern, NC is a historic waterfront city at the confluence of the Neuse and Trent rivers. As the birthplace of Pepsi-Cola and the second oldest town in North Carolina, New Bern combines rich history with modern business opportunities.",
-    "population": 30000,
-    "businessCount": 1700,
-    "latitude": 35.1085,
-    "longitude": -77.0441,
-    "primaryCity": true,
-    "distance": 0,
-    "localIndustries": [
-      "Tourism",
-      "Healthcare",
-      "Retail",
-      "Food & Beverage",
-      "Marine Services",
-      "Real Estate"
-    ],
-    "competitionLevel": "Medium",
-    "metaTitle": "New Bern NC Local SEO Services | CravenSEO",
-    "metaDescription": "Dominate local search results in New Bern, NC with our specialized SEO services tailored for small businesses in Craven County.",
-    "keyBusinessChallenges": [
-      "Standing out among historic tourist attractions",
-      "Competing with larger regional businesses",
-      "Attracting customers from surrounding areas",
-      "Seasonal tourism fluctuation"
-    ]
+    "slug": "new-bern",
+    "description": "New Bern is a historic waterfront city and the second oldest town in North Carolina. As the Craven County seat, it offers businesses a unique opportunity to serve both locals and tourists visiting for its colonial charm and waterfront attractions.",
+    "population": "30,000+",
+    "keyIndustries": ["Tourism", "Healthcare", "Retail", "Manufacturing", "Professional Services"],
+    "image": "/images/locations/new-bern.jpg"
   },
   {
-    "id": "greenville",
     "name": "Greenville",
-    "state": "NC",
-    "county": "Pitt",
-    "slug": "greenville-nc",
-    "description": "Greenville is the county seat of Pitt County and the 10th-largest city in North Carolina. Home to East Carolina University and Vidant Medical Center, Greenville serves as a major economic hub for the eastern part of the state.",
-    "population": 93000,
-    "businessCount": 5200,
-    "latitude": 35.6127,
-    "longitude": -77.3664,
-    "primaryCity": false,
-    "distance": 36.5,
-    "localIndustries": [
-      "Healthcare",
-      "Education",
-      "Retail",
-      "Food & Beverage",
-      "Professional Services",
-      "Student Services"
-    ],
-    "competitionLevel": "High",
-    "metaTitle": "Greenville NC Local SEO Services | CravenSEO",
-    "metaDescription": "Boost your Greenville, NC business's online visibility with our data-driven local SEO strategies tailored for Pitt County businesses.",
-    "keyBusinessChallenges": [
-      "Higher competition due to larger market",
-      "University market seasonality",
-      "Standing out in a diverse business environment",
-      "Targeting appropriate demographics"
-    ]
+    "slug": "greenville",
+    "description": "Greenville is the county seat of Pitt County and home to East Carolina University. As the major commercial center for Eastern North Carolina, it offers a growing market with a diverse economy driven by education, healthcare, and manufacturing.",
+    "population": "87,000+",
+    "keyIndustries": ["Healthcare", "Education", "Manufacturing", "Technology", "Retail"],
+    "image": "/images/locations/greenville.jpg"
   },
   {
-    "id": "jacksonville",
     "name": "Jacksonville",
-    "state": "NC",
-    "county": "Onslow",
-    "slug": "jacksonville-nc",
-    "description": "Jacksonville is the principal city of Onslow County and home to Marine Corps Base Camp Lejeune and Marine Corps Air Station New River. The city's economy is heavily influenced by the military presence while offering diverse business opportunities.",
-    "population": 73000,
-    "businessCount": 3800,
-    "latitude": 34.7541,
-    "longitude": -77.4303,
-    "primaryCity": false,
-    "distance": 38.7,
-    "localIndustries": [
-      "Military Services",
-      "Retail",
-      "Food & Beverage",
-      "Real Estate",
-      "Automotive",
-      "Healthcare"
-    ],
-    "competitionLevel": "Medium-High",
-    "metaTitle": "Jacksonville NC Local SEO Services | CravenSEO",
-    "metaDescription": "Grow your Jacksonville, NC business with specialized local SEO services that capture military and civilian customers in Onslow County.",
-    "keyBusinessChallenges": [
-      "Highly transient military population",
-      "Competitor saturation in key industries",
-      "Creating sustainable customer base",
-      "Targeting both military and civilian markets"
-    ]
+    "slug": "jacksonville",
+    "description": "Jacksonville is the principal city of Onslow County and home to Marine Corps Base Camp Lejeune. This military-influenced community offers businesses a unique demographic with a steady flow of new residents and a strong focus on service industries.",
+    "population": "70,000+",
+    "keyIndustries": ["Military", "Healthcare", "Retail", "Hospitality", "Construction"],
+    "image": "/images/locations/jacksonville.jpg"
   },
   {
-    "id": "kinston",
-    "name": "Kinston",
-    "state": "NC",
-    "county": "Lenoir",
-    "slug": "kinston-nc",
-    "description": "Kinston is the county seat of Lenoir County and a center for business, arts, and culture in eastern North Carolina. Once a major tobacco and cotton trading center, Kinston has evolved into a diverse economy with growing tourism and culinary sectors.",
-    "population": 20000,
-    "businessCount": 1200,
-    "latitude": 35.2627,
-    "longitude": -77.5836,
-    "primaryCity": false,
-    "distance": 30.1,
-    "localIndustries": [
-      "Manufacturing",
-      "Agriculture",
-      "Food & Beverage",
-      "Tourism",
-      "Healthcare",
-      "Retail"
-    ],
-    "competitionLevel": "Low-Medium",
-    "metaTitle": "Kinston NC Local SEO Services | CravenSEO",
-    "metaDescription": "Increase your Kinston, NC business's visibility with custom local SEO strategies that help you outrank competitors in Lenoir County.",
-    "keyBusinessChallenges": [
-      "Economic revitalization efforts",
-      "Attracting visitors and customers from larger cities",
-      "Building online presence with limited resources",
-      "Reaching regional customer base"
-    ]
-  },
-  {
-    "id": "morehead-city",
-    "name": "Morehead City",
-    "state": "NC",
-    "county": "Carteret",
-    "slug": "morehead-city-nc",
-    "description": "Morehead City is a port town in Carteret County and serves as a gateway to the Crystal Coast and Outer Banks. Known for sport fishing, beaches, and seafood, the city balances tourism with a working port and diverse business community.",
-    "population": 9500,
-    "businessCount": 850,
-    "latitude": 34.7229,
-    "longitude": -76.7264,
-    "primaryCity": false,
-    "distance": 35.8,
-    "localIndustries": [
-      "Tourism",
-      "Fishing & Marine",
-      "Hospitality",
-      "Retail",
-      "Real Estate",
-      "Food & Beverage"
-    ],
-    "competitionLevel": "Medium",
-    "metaTitle": "Morehead City NC Local SEO Services | CravenSEO",
-    "metaDescription": "Enhance your Morehead City business's online presence with specialized local SEO services designed for Carteret County's unique coastal market.",
-    "keyBusinessChallenges": [
-      "Extreme seasonal tourism fluctuation",
-      "Weather-dependent business cycles",
-      "Standing out in tourism-saturated market",
-      "Reaching both visitors and year-round residents"
-    ]
-  },
-  {
-    "id": "wilmington",
     "name": "Wilmington",
-    "state": "NC",
-    "county": "New Hanover",
-    "slug": "wilmington-nc",
-    "description": "Wilmington is a port city and the county seat of New Hanover County. With its historic downtown, beaches, and status as a regional center for film and television production, Wilmington offers a vibrant business environment with strong tourism influence.",
-    "population": 123000,
-    "businessCount": 8500,
-    "latitude": 34.2257,
-    "longitude": -77.9447,
-    "primaryCity": false,
-    "distance": 87.3,
-    "localIndustries": [
-      "Tourism",
-      "Film & Television",
-      "Healthcare",
-      "Education",
-      "Real Estate",
-      "Technology"
-    ],
-    "competitionLevel": "Very High",
-    "metaTitle": "Wilmington NC Local SEO Services | CravenSEO",
-    "metaDescription": "Stand out in Wilmington's competitive business landscape with our data-driven local SEO strategies tailored for New Hanover County businesses.",
-    "keyBusinessChallenges": [
-      "High competition in major industries",
-      "Seasonal tourism fluctuations",
-      "Balancing tourist and resident target markets",
-      "Differentiating from established businesses"
-    ]
+    "slug": "wilmington",
+    "description": "Wilmington is a coastal city and the county seat of New Hanover County. Known for its historic riverfront, beaches, and film industry, it offers businesses access to both year-round residents and a substantial tourism market.",
+    "population": "115,000+",
+    "keyIndustries": ["Tourism", "Film Production", "Healthcare", "Education", "Technology", "Real Estate"],
+    "image": "/images/locations/wilmington.jpg"
   },
   {
-    "id": "havelock",
-    "name": "Havelock",
-    "state": "NC",
-    "county": "Craven",
-    "slug": "havelock-nc",
-    "description": "Havelock is home to Marine Corps Air Station Cherry Point and part of the New Bern Metropolitan Statistical Area. The city's economy is closely tied to the military presence while supporting a growing small business community.",
-    "population": 20000,
-    "businessCount": 950,
-    "latitude": 34.9141,
-    "longitude": -76.9011,
-    "primaryCity": false,
-    "distance": 17.9,
-    "localIndustries": [
-      "Military Services",
-      "Aviation",
-      "Retail",
-      "Food & Beverage",
-      "Automotive",
-      "Real Estate"
-    ],
-    "competitionLevel": "Low-Medium",
-    "metaTitle": "Havelock NC Local SEO Services | CravenSEO",
-    "metaDescription": "Grow your Havelock business with targeted local SEO strategies that connect you with military families and residents in Craven County.",
-    "keyBusinessChallenges": [
-      "Military-dependent economy",
-      "Proximity to larger shopping areas",
-      "Transient customer base",
-      "Limited local search volume"
-    ]
+    "name": "Kinston",
+    "slug": "kinston",
+    "description": "Kinston is the county seat of Lenoir County and a center for arts, culture, and culinary tourism. Once a major tobacco market, the city has reinvented itself with a focus on local food, arts, and heritage tourism.",
+    "population": "20,000+",
+    "keyIndustries": ["Agriculture", "Manufacturing", "Healthcare", "Tourism", "Culinary Arts"],
+    "image": "/images/locations/kinston.jpg"
   },
   {
-    "id": "rocky-mount",
-    "name": "Rocky Mount",
-    "state": "NC",
-    "county": "Nash/Edgecombe",
-    "slug": "rocky-mount-nc",
-    "description": "Rocky Mount straddles Nash and Edgecombe counties and serves as a commercial hub for the region. With a history in manufacturing and agriculture, the city is diversifying its economy with new investment in technology and healthcare sectors.",
-    "population": 54000,
-    "businessCount": 2800,
-    "latitude": 35.9382,
-    "longitude": -77.7905,
-    "primaryCity": false,
-    "distance": 72.5,
-    "localIndustries": [
-      "Manufacturing",
-      "Agriculture",
-      "Healthcare",
-      "Distribution",
-      "Retail",
-      "Education"
-    ],
-    "competitionLevel": "Medium",
-    "metaTitle": "Rocky Mount NC Local SEO Services | CravenSEO",
-    "metaDescription": "Boost your Rocky Mount business's online visibility with customized local SEO strategies designed for Nash & Edgecombe County businesses.",
-    "keyBusinessChallenges": [
-      "Economic transition challenges",
-      "Competing with larger markets nearby",
-      "Building awareness online",
-      "Cross-county business targeting"
-    ]
-  },
-  {
-    "id": "goldsboro",
-    "name": "Goldsboro",
-    "state": "NC",
-    "county": "Wayne",
-    "slug": "goldsboro-nc",
-    "description": "Goldsboro is the principal city of Wayne County and home to Seymour Johnson Air Force Base. The city combines military influence with agricultural heritage and a growing downtown revitalization movement.",
-    "population": 35000,
-    "businessCount": 1950,
-    "latitude": 35.3849,
-    "longitude": -77.9928,
-    "primaryCity": false,
-    "distance": 57.8,
-    "localIndustries": [
-      "Military Services",
-      "Agriculture",
-      "Healthcare",
-      "Manufacturing",
-      "Retail",
-      "Food & Beverage"
-    ],
-    "competitionLevel": "Medium",
-    "metaTitle": "Goldsboro NC Local SEO Services | CravenSEO",
-    "metaDescription": "Strengthen your Goldsboro business's online presence with specialized local SEO services tailored for Wayne County's unique market.",
-    "keyBusinessChallenges": [
-      "Military population turnover",
-      "Downtown revitalization awareness",
-      "Competing with larger regional shopping centers",
-      "Attracting customers from surrounding rural areas"
-    ]
-  },
-  {
-    "id": "washington",
-    "name": "Washington",
-    "state": "NC",
-    "county": "Beaufort",
-    "slug": "washington-nc",
-    "description": "Washington (often called \"Little Washington\" to distinguish it from Washington, D.C.) is the county seat of Beaufort County. Situated on the Pamlico River, the city combines waterfront charm with a historic downtown and growing business district.",
-    "population": 9500,
-    "businessCount": 780,
-    "latitude": 35.5465,
-    "longitude": -77.0519,
-    "primaryCity": false,
-    "distance": 42.1,
-    "localIndustries": [
-      "Tourism",
-      "Healthcare",
-      "Retail",
-      "Marine Services",
-      "Real Estate",
-      "Agriculture"
-    ],
-    "competitionLevel": "Low-Medium",
-    "metaTitle": "Washington NC Local SEO Services | CravenSEO",
-    "metaDescription": "Increase your Washington, NC business's visibility with targeted local SEO strategies customized for Beaufort County's unique market.",
-    "keyBusinessChallenges": [
-      "Seasonal tourism fluctuation",
-      "Capturing regional customer base",
-      "Limited local search volume",
-      "Differentiating from nearby markets"
-    ]
+    "name": "Morehead City",
+    "slug": "morehead-city",
+    "description": "Morehead City is a port town in Carteret County known for its fishing industry and access to the Crystal Coast. This waterfront community offers businesses opportunities in tourism, marine services, and supporting the region's coastal lifestyle.",
+    "population": "9,000+",
+    "keyIndustries": ["Tourism", "Fishing", "Maritime Industries", "Retail", "Real Estate"],
+    "image": "/images/locations/morehead-city.jpg"
   }
 ]
